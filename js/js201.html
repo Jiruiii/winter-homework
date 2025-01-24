@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">   
+    <title>js201</title>
+</head>
+<body>
+    <h1>js201</h1>
+    <p>js201</p>
+    <script>
+        "use strict";
+        let count=0;
+        const myinterval=setInterval(function(){
+            console.log("Checking...");
+            count++;
+            if(count===3){
+                clearInterval(myinterval);
+                console.log("Done");
+            }
+        },1000);
+
+        const month=["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+        const [ , , Ma, , , Ju] = month;//逗號略過不要的元素
+        console.log(Ju, Ma); // Jun Mar
+
+        const person={
+            "name":"ray",
+            "age":18,
+            "instagram":"ray_0623",
+            greet(){
+                return `Hello ${this.name}`;
+            }
+        };
+        const name=person.greet();
+    </script>
+</body>
+</html>

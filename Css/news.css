@@ -1,0 +1,44 @@
+p::first-letter{
+    font-size: 50px;
+    float: left;
+    margin: 1px 2px 0px 0px;   
+}
+.floating-image {
+    float: right; /* 使圖片浮動至右側 */
+    margin: 10px; /* 增加圖片與文字的間距 */
+    width: 300px;
+    height: 300px;
+    border: 3px solid black; /* 增加邊框以提升視覺效果 */
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5); /* 增加陰影效果 */
+}
+body{
+    background-color: wheat;
+}
+.lxgw-wenkai-mono-tc-regular {
+    font-family: "LXGW WenKai Mono TC", serif;
+    font-weight: 400;
+    font-style: normal;
+  }
+.left{
+    color: red;
+    background-color: rgb(239, 239, 167);
+    font-size: 30px;
+    display: flex;
+    flex-basis:20%;
+    flex-shrink: 0;
+    flex-grow: 0;
+    padding: 10px;
+}
+.right{
+    color: rgb(0, 0, 0);
+    background-color: rgb(255, 255, 212);
+    font-size: 30px;
+    display: flex;
+    flex-basis:80% ;
+    flex-shrink: 0;
+    flex-grow: 0;
+    padding: 10px;
+}
+.container{
+    display:flex;
+}

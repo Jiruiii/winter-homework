@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">   
+    <title>project</title>
+</head>
+<body>
+    <div id="name"></div>
+    <div id="height"></div>
+    <div id="movies"></div>
+    <button class="randomm">Randomize!!!</button>
+
+    <script>
+        "use strict";
+        const name = document.getElementById("name");
+        const height = document.getElementById("height");
+        const movies = document.getElementById("movies");
+        const button = document.querySelector(".randomm");
+
+        button.addEventListener("click", (e) => {
+            e.preventDefault();
+            const random_num = Math.ceil(Math.random() * 83);
+            fetch(`https://swapi.dev/api/people/${random_num}/`)
+                .then(response => response.json())
+                .then(data => {
+                    name.innerHTML = `Name: ${data.name}`;
+                    height.innerHTML = `Height: ${data.height}`;
+                    movies.innerHTML = "Movies: ";
+                    data.films.forEach(film => {
+                        fetch(film)
+                            .then(response => response.json())
+                            .then(filmData => {
+                                const filmElement = document.createElement("div");
+                                filmElement.innerHTML = filmData.title;
+                                movies.appendChild(filmElement);
+                            });
+                    });
+                });
+        });
+    </script>
+</body>
+</html>

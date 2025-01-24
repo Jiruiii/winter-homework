@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">   
+    <title>class</title>
+</head>
+<body>
+    <h1>class</h1>
+    <p>class</p>
+    <script>
+        "use strict";
+        class Person{
+            constructor(name,age){
+                this.name=name;
+                this.age=age;
+            }
+            greet(){
+                return `Hello ${this.name}`;
+            }
+        }
+        const ray=new Person("ray",18);
+        const greeting=ray.greet();
+        console.log(greeting);
+    </script>
+</body>
+</html>
