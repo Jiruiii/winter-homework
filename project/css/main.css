@@ -1,5 +1,5 @@
 body {
-    background-color: lightblue !important;
+    background-color: rgb(255, 255, 255) !important;
     margin: 0;
     padding: 0;
     font-family: "LXGW WenKai Mono TC", Arial, sans-serif; /* 全局字體 */
@@ -53,7 +53,7 @@ body {
     height: 15px;
     display: inline-block;
     vertical-align: middle;
-    background-image: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyB3aWR0aD0iMTVweCIgaGVpZ2h0PSIxNnB4IiB2aWV3Qm94PSIwIDAgMTUgMTYiIHZlcnNpb249IjEuMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayI+CiAgICA8dGl0bGU+MUM5Njk2N0EtODIzMC00ODYwLUE3NDItMTFFMThCQjdCMTM1PC90aXRsZT4KICAgIDxnIGlkPSItLS0tLSIgc3Ryb2tlPSJub25lIiBzdHJva2Utd2lkdGg9IjEiIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCI+CiAgICAgICAgPGcgaWQ9IuS8gealreewoeS7iy3ntpPnh5/nkIblv7UiIHRyYW5zZm9ybT0idHJhbnNsYXRlKC03MTIuMDAwMDAwLCAtMzcuMDAwMDAwKSIgZmlsbD0iIzI2MUExNiIgZmlsbC1ydWxlPSJub256ZXJvIj4KICAgICAgICAgICAgPGcgaWQ9ImZvb3RlciIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoLTEwNTcuMDAwMDAwLCAwLjAwMDAwMCkiPgogICAgICAgICAgICAgICAgPGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMTA1Ny4wMDAwMDAsIDAuMDAwMDAwKSI+CiAgICAgICAgICAgICAgICAgICAgPGcgaWQ9Ikdyb3VwLTQ4IiB0cmFuc2Zvcm09InRyYW5zbGF0ZSg0ODEuMDAwMDAwLCAxMS4wMDAwMDApIj4KICAgICAgICAgICAgICAgICAgICAgICAgPGcgaWQ9Ikdyb3VwIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgwLjAwMDAwMCwgMC41MDAwMDApIj4KICAgICAgICAgICAgICAgICAgICAgICAgICAgIDxnIGlkPSJhbmdsZS1sZWZ0LXNvbGlkIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgyMzguNTAwMDAwLCAzMy41MDAwMDApIHJvdGF0ZSgtOTAuMDAwMDAwKSB0cmFuc2xhdGUoLTIzOC41MDAwMDAsIC0zMy41MDAwMDApIHRyYW5zbGF0ZSgyMzEuMDAwMDAwLCAyNi4wMDAwMDApIj4KICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICA8cGF0aCBkPSJNNS4xNzAyNDYwOSw3LjA3NTEzMjc3IEw4LjQ2MDIzNjIzLDMuNjc2MTk0OTQgQzguNjg3NjMyNjEsMy40NDEyNjgzNSA5LjA1NTMzNzM5LDMuNDQxMjY4MzUgOS4yODAzMTQ2NiwzLjY3NjE5NDk0IEw5LjgyNzAzMzYxLDQuMjQxMDE4NDMgQzEwLjA1NDQzLDQuNDc1OTQ1MDIgMTAuMDU0NDMsNC44NTU4MjYzIDkuODI3MDMzNjEsNS4wODgyNTM2NyBMNy40OTc0MzAzLDcuNSBMOS44Mjk0NTI3Miw5LjkwOTI0NzExIEMxMC4wNTY4NDkxLDEwLjE0NDE3MzcgMTAuMDU2ODQ5MSwxMC41MjQwNTUgOS44Mjk0NTI3MiwxMC43NTY0ODIzIEw5LjI4MjczMzc3LDExLjMyMzgwNTEgQzkuMDU1MzM3MzksMTEuNTU4NzMxNiA4LjY4NzYzMjYxLDExLjU1ODczMTYgOC40NjI2NTUzNCwxMS4zMjM4MDUxIEw1LjE3MjY2NTIsNy45MjQ4NjcyMyBDNC45NDI4NDk3Miw3LjY4OTk0MDY0IDQuOTQyODQ5NzIsNy4zMTAwNTkzNiA1LjE3MDI0NjA5LDcuMDc1MTMyNzcgWiIgaWQ9IlBhdGgiPjwvcGF0aD4KICAgICAgICAgICAgICAgICAgICAgICAgICAgIDwvZz4KICAgICAgICAgICAgICAgICAgICAgICAgPC9nPgogICAgICAgICAgICAgICAgICAgIDwvZz4KICAgICAgICAgICAgICAgIDwvZz4KICAgICAgICAgICAgPC9nPgogICAgICAgIDwvZz4KICAgIDwvZz4KPC9zdmc+);
+    background-image: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyB3aWR0aD0iMTVweCIgaGVpZ2htPSIxNnB4IiB2aWV3Qm94PSIwIDAgMTUgMTYiIHZlcnNpb249IjEuMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayI+CiAgICA8dGl0bGU+MUM5Njk2N0EtODIzMC00ODYwLUE3NDItMTFFMThCQjdCMTM1PC90aXRsZT4KICAgIDxnIGlkPSItLS0tLSIgc3Ryb2tlPSJub25lIiBzdHJva2Utd2lkdGg9IjEiIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCI+CiAgICAgICAgPGcgaWQ9IuS8gealreewoeS7iy3ntpPnh5/nkIblv7UiIHRyYW5zZm9ybT0idHJhbnNsYXRlKC03MTIuMDAwMDAwLCAtMzcuMDAwMDAwKSIgZmlsbD0iIzI2MUExNiIgZmlsbC1ydWxlPSJub256ZXJvIj4KICAgICAgICAgICAgPGcgaWQ9ImZvb3RlciIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoLTEwNTcuMDAwMDAwLCAwLjAwMDAwMCkiPgogICAgICAgICAgICAgICAgPGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMTA1Ny4wMDAwMDAsIDAuMDAwMDAwKSI+CiAgICAgICAgICAgICAgICAgICAgPGcgaWQ9Ikdyb3VwLTQ4IiB0cmFuc2Zvcm09InRyYW5zbGF0ZSg0ODEuMDAwMDAwLCAxMS4wMDAwMDApIj4KICAgICAgICAgICAgICAgICAgICAgICAgPGcgaWQ9Ikdyb3VwIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgwLjAwMDAwMCwgMC41MDAwMDApIj4KICAgICAgICAgICAgICAgICAgICAgICAgICAgIDxnIGlkPSJhbmdsZS1sZWZ0LXNvbGlkIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgyMzguNTAwMDAwLCAzMy41MDAwMDApIHJvdGF0ZSgtOTAuMDAwMDAwKSB0cmFuc2xhdGUoLTIzOC41MDAwMDAsIC0zMy41MDAwMDApIHRyYW5zbGF0ZSgyMzEuMDAwMDAwLCAyNi4wMDAwMDApIj4KICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICA8cGF0aCBkPSJNNS4xNzAyNDYwOSw3LjA3NTEzMjc3IEw4LjQ2MDIzNjIzLDMuNjc2MTk0OTQgQzguNjg3NjMyNjEsMy40NDEyNjgzNSA5LjA1NTMzNzM5LDMuNDQxMjY4MzUgOS4yODAzMTQ2NiwzLjY3NjE5NDk0IEw5LjgyNzAzMzYxLDQuMjQxMDE4NDMgQzEwLjA1NDQzLDQuNDc1OTQ1MDIgMTAuMDU0NDMsNC44NTU4MjYzIDkuODI3MDMzNjEsNS4wODgyNTM2NyBMNy40OTc0MzAzLDcuNSBMOS44Mjk0NTI3Miw5LjkwOTI0NzExIEMxMC4wNTY4NDkxLDEwLjE0NDE3MzcgMTAuMDU2ODQ5MSwxMC41MjQwNTUgOS44Mjk0NTI3MiwxMC43NTY0ODIzIEw5LjI4MjczMzc3LDExLjMyMzgwNTEgQzkuMDU1MzM3MzksMTEuNTU4NzMxNiA4LjY4NzYzMjYxLDExLjU1ODczMTYgOC40NjI2NTUzNCwxMS4zMjM4MDUxIEw1LjE3MjY2NTIsNy45MjQ4NjcyMyBDNC45NDI4NDk3Miw3LjY4OTk0MDY0IDQuOTQyODQ5NzIsNy4zMTAwNTkzNiA1LjE3MDI0NjA5LDcuMDc1MTMyNzcgWiIgaWQ9IlBhdGgiPjwvcGF0aD4KICAgICAgICAgICAgICAgICAgICAgICAgICAgIDwvZz4KICAgICAgICAgICAgICAgICAgICAgICAgPC9nPgogICAgICAgICAgICAgICAgICAgIDwvZz4KICAgICAgICAgICAgICAgIDwvZz4KICAgICAgICAgICAgPC9nPgogICAgICAgIDwvZz4KICAgIDwvZz4KPC9zdmc+);
 }
 
 /* 單個菜單項目 */
@@ -70,6 +70,7 @@ body {
     display: flex;
     align-items: center; /* 垂直居中 */
     padding: 10px 15px;
+    cursor: pointer;
 }
 
 /* 下拉選單 */
@@ -122,20 +123,24 @@ body {
 
 /* Swiper Container */
 .swiper-container {
-    width: 100vw; /* 滿螢幕寬度 */
-    height: 100vh; /* 滿螢幕高度 */
+    width: 100%; /* 滿螢幕寬度 */
+    height: auto; /* 自動高度 */
     overflow: hidden;
     position: relative;
+    aspect-ratio: 1519 / 856; /* 使用原圖片比例 */
+    background-color:#f0f0f0;
 }
 
 /* Swiper Wrapper */
 .swiper-wrapper {
+    width: 100%;
     display: flex;
     transition: transform 0.5s ease-in-out;
 }
 
 /* Swiper Slide */
 .swiper-slide {
+    width: 100%;
     flex: 0 0 100%; /* 每張圖片佔滿容器寬度 */
     display: flex;
     justify-content: center;
@@ -144,7 +149,62 @@ body {
 
 /* Swiper Image */
 .swiper-slide img {
-    width: 100vw; /* 圖片寬度滿螢幕 */
-    height: 100vh; /* 圖片高度滿螢幕 */
+    width: 100%; /* 圖片寬度滿螢幕 */
+    height: auto; /* 圖片高度自動 */
     object-fit: cover; /* 填滿容器，可能會裁切 */
+}
+
+/*影片*/
+.home-video {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+.home-video .video-box{
+    position: relative;
+    padding-bottom: 56.25%; /* 16:9 */
+    height: 0;
+    overflow: hidden;
+    max-width:100%px;
+    margin-top:20px;
+}
+.home-video .video-box .left{
+    max-width:995px;
+    position: absolute;
+    top: 0;
+    left: 10px;
+    width: 60%;
+    height: 400px;
+    padding:20px;
+    border-radius: 20px;
+    margin-top: 20px;
+    background-color: #f1cf287a;
+}
+.video-box iframe {
+    width: 100%;
+    height: 100%;
+    max-width: 800px; /* 可根據需要設置 */
+    max-height: 450px;
+}
+/*影片說明*/
+.home-video .video-box .right{
+    max-width:995px;
+    width:55%;
+    height:743px;
+    vertical-align: top;<!--對齊方式-->
+    width: 30%;
+    height: 400px;
+    padding:20px;
+    border-radius: 20px;
+    margin-left: 680px;
+    background-color: #8080803b;
+    float: right;
+}
+/*影片說明文字*/
+.home-video .video-box .right .text{
+    width:100%;
+    height:100%;
+    position :relative;
+    overflow: hidden;
+    z-index: 1;
 }

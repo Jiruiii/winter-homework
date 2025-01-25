@@ -57,7 +57,7 @@
                 </ul>
                 <ul class="menu-nav-list">
                     <li class="menu-nav-li">
-                        <a class="menu-nav-a lxgw-wenkai-mono-tc-regular menu-order">線上點餐</a>
+                        <a href="page/menu.html" class="menu-nav-a lxgw-wenkai-mono-tc-regular menu-order">線上點餐</a>
                     </li>
                 </ul>
             </div>
@@ -71,6 +71,19 @@
             </div>
             <div class="swiper-slide">
                 <img src="https://www.8way.com.tw/8WayApi/document/8c0d36ef-b573-4aeb-ad76-e3f72f389491.jpg" alt="banner 2">
+            </div>
+        </div>
+    </div>
+    <div class="home-video">
+        <div class="video-box">
+            <div class="left"><!--影片-->
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/k5Ab8Bxva_k?si=nfs3_efSFbRlgXl0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </div>
+
+            <div class=right>
+                <div class="text-box">
+                    
+                </div>
             </div>
         </div>
     </div>
@@ -91,7 +104,7 @@
         const translateX = -currentIndex * 100; // 每次移動 100%
 
         // 設置 transform 屬性來移動圖片
-        swiperWrapper.style.transform = translateX(${translateX}%);
+        swiperWrapper.style.transform = `translateX(${translateX}%)`;
     }
 
     // 每 4 秒切換一次圖片
