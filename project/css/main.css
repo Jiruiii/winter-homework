@@ -1,12 +1,16 @@
     body {
-        background-color: rgb(255, 255, 255) !important;
+        background-color:#FAF3E0!important;
         margin: 0;
         padding: 0;
         font-family: "LXGW WenKai Mono TC", Arial, sans-serif; /* 全局字體 */
         font-size: 40px; /* 全局字體大小 */
         line-height: 1.6; /* 行距 */
     }
-
+    .poppins-black {
+        font-family: "Poppins", serif;
+        font-weight: 900;
+        font-style: normal;
+      }
     .lxgw-wenkai-mono-tc-regular {
         font-family: "LXGW WenKai Mono TC", serif;
         font-weight: 400;
@@ -14,10 +18,17 @@
     }
 
     .header-box {
-        background-color: #f0f0f0;
+        position: fixed; /* 固定位置 */
+        top: 0; /* 靠畫面頂端 */
+        left: 0; /* 靠畫面左側 */
+        width: 100%; /* 寬度佔滿畫面 */
+        z-index: 1000; /* 確保在其他元素之上 */
+        background-color: #f0f0f0!important; /* 確保背景色覆蓋內容 */
         color: #000000;
         padding: 10px 0;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* 添加陰影以區分內容 */
     }
+    
 
     .menu-box {
         font-size: 30px;
@@ -158,6 +169,8 @@
         width: 100%;
         height: auto;
         object-fit: cover;
+        position: relative;
+        min-height: calc(100vh - 60px); /* 確保足夠高度，減去 header */
     }
     .home-video .video-box{
         position: relative;
@@ -174,10 +187,10 @@
         left: 10px;
         width: 55%;
         height: 400px;
-        padding:20px 10px 20px 10px;
+        padding:15px;
         border-radius: 20px;
         margin-top: 20px;
-        background-color: #f1cf287a;
+        background-color: #5D4037;
         display: flex; /* 使用 flexbox */
         justify-content: center; /* 水平居中 */
         align-items: center; /* 垂直居中 */
@@ -216,16 +229,21 @@
         flex-direction: column;
         justify-content: space-between;
         height: 100%;
+        overflow:visible;
     }
 
     .swiper-text {
-        padding-left: 200px ;
+        padding-left: 190px ;
         padding-top: 10px;
         display: flex;
         align-items: center;
         cursor: pointer;
         height: 100px; /* 明確設置高度 */
         transition: all 0.3s;
+    }
+    .swiper-text:hover {
+        transform: scale(1.10); /* 滑鼠懸停時放大 1.10 倍 */
+        z-index: 10; /* 提高層級避免被其他元素覆蓋 */
     }
 
     .video-image {
@@ -248,3 +266,48 @@
     .video-text h4{
         padding-bottom: 2%;
     }
+    /* 顯示橫線的元素 */
+.active-indicator {
+    width: 5px;
+    height: 80%;
+    background-color: transparent; /* 預設透明 */
+    border-radius: 3px;
+    margin-right: 10px; /* 與文字保持距離 */
+    transition: background-color 0.3s ease;
+}
+
+/* 當父容器有 active 類時顯示橫線 */
+.swiper-text.active .active-indicator {
+    background-color: #f8a506; /* 橫線顏色 */
+}
+
+.noodle{
+    position:absolute;
+    bottom: 0px;
+    right: 0px;
+}
+.noodle img{
+    width:200px;
+    height: auto;
+}
+
+.word-box {
+    position: absolute;
+    bottom: 5%; /* 與底部的距離 */
+    left: 50%;
+    transform: translateX(-50%); /* 修正位置，讓中心對齊 */
+    display: flex; /* 使用 flex 容器 */
+    justify-content: center; /* 水平居中 */
+    align-items: center; /* 垂直居中 */
+    gap: 20px; /* 設置每個字之間的間距 */
+}
+
+.word {
+    font-size: 70px;
+    white-space: nowrap; /* 防止換行 */
+    background: linear-gradient(45deg, #FFAB91, #FF7043);
+    border-radius: 15px;
+    border: 2px solid #5D4037;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+

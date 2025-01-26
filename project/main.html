@@ -83,15 +83,18 @@
             <div class=right>
                 <div class="text-box">
                     <div class="text-container">
-                        <div class="swiper-text" data-src="https://www.youtube.com/embed/k5Ab8Bxva_k?si=nfs3_efSFbRlgXl0">
+                        <div class="swiper-text active" data-src="https://www.youtube.com/embed/k5Ab8Bxva_k?si=nfs3_efSFbRlgXl0">
+                            <div class="active-indicator"></div> <!-- 用於顯示橫線 -->
                             <div class="video-image"><img src="image/main-dumpling.jpg"></div>
                             <div class="video-text"><h4>水餃培根蔬菜捲</h4><p>結合了水餃的飽滿、培根的香氣和蔬菜的清甜</p></div>
                         </div>
                         <div class="swiper-text" data-src="https://www.youtube.com/embed/LwSSdidr45Q?si=nhImXNog_-mnzz2i">
+                            <div class="active-indicator"></div> <!-- 用於顯示橫線 -->
                             <div class="video-image"><img src="image/roasted-dumpling.jpg"></div>
                             <div class="video-text"><h4>烤水餃</h4><p>結合了煎餃與烤製的特色，外皮酥脆金黃，內餡多汁鮮美。</p></div>
                         </div>
                         <div class="swiper-text" data-src="https://www.youtube.com/embed/uBpp9vMFBZQ?si=PorWd-rMp8gqII5_">
+                            <div class="active-indicator"></div> <!-- 用於顯示橫線 -->
                             <div class="video-image"><img src="image/korea-dumpling.jpg"></div>
                             <div class="video-text"><h4>韓式泡菜鮮蝦餃</h4><p>柔軟中帶有一點嚼勁，讓每一口都充滿鮮香與微微辣意。</p></div>
                         </div>
@@ -99,6 +102,13 @@
                 </div>
             </div>
         </div>
+        <div class="noodle">
+            <img src="https://www.8way.com.tw/static/img/surface.2d49aeb.png">
+        </div>
+        <div class="word-box">
+            <div class="word poppins-black">「利他、分享、公益」</div>
+        </div>
+
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
@@ -125,15 +135,22 @@
     const swiperTexts = document.querySelectorAll(".swiper-text");
     const videoIframe = document.querySelector(".video-box iframe");
 
-    swiperTexts.forEach(text => {
+    swiperTexts.forEach((text) => {
         text.addEventListener("click", function () {
+            // 移除所有元素的 active 類
+            swiperTexts.forEach((item) => item.classList.remove("active"));
+            // 為當前點擊的元素添加 active 類
+            this.classList.add("active");
+
             const newSrc = this.getAttribute("data-src");
             if (newSrc) {
-                videoIframe.setAttribute("src", newSrc);
+                videoIframe.setAttribute("src", newSrc); // 更新影片
             }
+            });
         });
     });
-});
+
+
     </script>
 </body>
 </html>
