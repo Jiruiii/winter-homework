@@ -67,25 +67,26 @@
         #layout {
             display: flex;
             height: 100vh; /* 固定高度填滿視窗 */
-            overflow: hidden; /* 確保不會有外部滾動影響 */
+            overflow-y: auto; /* 確保父容器滾動 */
+            overflow-x: hidden;
         }
 
         #sidebar {
             width: 15%; /* 固定寬度 */
             min-width: 200px; /* 設置一個最小寬度避免內容壓縮 */
-            background-color: #f8f9fa;
+            background-color: #FAF3E0;
             padding: 10px;
             box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
-            overflow-y: auto;
+            flex: 0 0 200px; /* 固定寬度 */
+            overflow: hidden; /* 禁止內部滾動 */
             box-sizing: border-box; /* 包括 padding 在內計算寬度 */
         }
 
         #content {
-            width: 85%; /* 固定寬度 */
+            flex: 1; /* 自適應寬度 */
             padding: 20px;
             background-color: #ffffff;
-            overflow-y: auto; /* 垂直內容捲動 */
-            overflow-x: hidden; /* 禁止水平溢出，避免撐開 */
+            overflow: hidden; /* 禁止內部滾動 */
             box-sizing: border-box; /* 包括 padding 在內計算寬度 */
         }
 
@@ -118,6 +119,7 @@
             padding: 16px;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
+            background-color:#FFA07A;
         }
         .card img {
             width: 100%;
@@ -150,27 +152,186 @@
             transform: scale(1.05);
             box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
         }
+        .header-box {
+        position: fixed; /* 固定位置 */
+        top: 0; /* 靠畫面頂端 */
+        left: 0; /* 靠畫面左側 */
+        width: 100%; /* 寬度佔滿畫面 */
+        z-index: 1000; /* 確保在其他元素之上 */
+        background-color: #f0f0f0!important; /* 確保背景色覆蓋內容 */
+        color: #000000;
+        padding: 10px 0;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* 添加陰影以區分內容 */
+    }
+    .menu-box {
+        font-size: 30px;
+        padding-left: 12%;
+        padding-right: 5%;
+    }
+
+    /* Logo 和菜單容器 */
+    .menu-nav {
+        display: flex; /* 使用 flexbox 讓 logo 和菜單同一行 */
+        align-items: center; /* 垂直居中 */
+        padding: 0 20px;
+        justify-content: space-between; /* 元素之間均分空間 */
+    }
+
+    /* Logo */
+    .menu-logo img {
+        height: 50px; /* 控制 logo 的大小 */
+        margin-right: 20px; /* 與菜單間距 */
+    }
+
+    /* 菜單列表 */
+    .menu-nav-list {
+        display: flex; /* 讓菜單項目同行 */
+        list-style: none; /* 移除默認樣式 */
+        margin: 0;
+        padding: 0;
+    }
+
+    /* 下拉符號 */
+    .down {
+        width: 15px;
+        height: 15px;
+        display: inline-block;
+        vertical-align: middle;
+        background-image: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyB3aWR0aD0iMTVweCIgaGVpZ2htPSIxNnB4IiB2aWV3Qm94PSIwIDAgMTUgMTYiIHZlcnNpb249IjEuMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayI+CiAgICA8dGl0bGU+MUM5Njk2N0EtODIzMC00ODYwLUE3NDItMTFFMThCQjdCMTM1PC90aXRsZT4KICAgIDxnIGlkPSItLS0tLSIgc3Ryb2tlPSJub25lIiBzdHJva2Utd2lkdGg9IjEiIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCI+CiAgICAgICAgPGcgaWQ9IuS8gealreewoeS7iy3ntpPnh5/nkIblv7UiIHRyYW5zZm9ybT0idHJhbnNsYXRlKC03MTIuMDAwMDAwLCAtMzcuMDAwMDAwKSIgZmlsbD0iIzI2MUExNiIgZmlsbC1ydWxlPSJub256ZXJvIj4KICAgICAgICAgICAgPGcgaWQ9ImZvb3RlciIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoLTEwNTcuMDAwMDAwLCAwLjAwMDAwMCkiPgogICAgICAgICAgICAgICAgPGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMTA1Ny4wMDAwMDAsIDAuMDAwMDAwKSI+CiAgICAgICAgICAgICAgICAgICAgPGcgaWQ9Ikdyb3VwLTQ4IiB0cmFuc2Zvcm09InRyYW5zbGF0ZSg0ODEuMDAwMDAwLCAxMS4wMDAwMDApIj4KICAgICAgICAgICAgICAgICAgICAgICAgPGcgaWQ9Ikdyb3VwIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgwLjAwMDAwMCwgMC41MDAwMDApIj4KICAgICAgICAgICAgICAgICAgICAgICAgICAgIDxnIGlkPSJhbmdsZS1sZWZ0LXNvbGlkIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgyMzguNTAwMDAwLCAzMy41MDAwMDApIHJvdGF0ZSgtOTAuMDAwMDAwKSB0cmFuc2xhdGUoLTIzOC41MDAwMDAsIC0zMy41MDAwMDApIHRyYW5zbGF0ZSgyMzEuMDAwMDAwLCAyNi4wMDAwMDApIj4KICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICA8cGF0aCBkPSJNNS4xNzAyNDYwOSw3LjA3NTEzMjc3IEw4LjQ2MDIzNjIzLDMuNjc2MTk0OTQgQzguNjg3NjMyNjEsMy40NDEyNjgzNSA5LjA1NTMzNzM5LDMuNDQxMjY4MzUgOS4yODAzMTQ2NiwzLjY3NjE5NDk0IEw5LjgyNzAzMzYxLDQuMjQxMDE4NDMgQzEwLjA1NDQzLDQuNDc1OTQ1MDIgMTAuMDU0NDMsNC44NTU4MjYzIDkuODI3MDMzNjEsNS4wODgyNTM2NyBMNy40OTc0MzAzLDcuNSBMOS44Mjk0NTI3Miw5LjkwOTI0NzExIEMxMC4wNTY4NDkxLDEwLjE0NDE3MzcgMTAuMDU2ODQ5MSwxMC41MjQwNTUgOS44Mjk0NTI3MiwxMC43NTY0ODIzIEw5LjI4MjczMzc3LDExLjMyMzgwNTEgQzkuMDU1MzM3MzksMTEuNTU4NzMxNiA4LjY4NzYzMjYxLDExLjU1ODczMTYgOC40NjI2NTUzNCwxMS4zMjM4MDUxIEw1LjE3MjY2NTIsNy45MjQ4NjcyMyBDNC45NDI4NDk3Miw3LjY4OTk0MDY0IDQuOTQyODQ5NzIsNy4zMTAwNTkzNiA1LjE3MDI0NjA5LDcuMDc1MTMyNzcgWiIgaWQ9IlBhdGgiPjwvcGF0aD4KICAgICAgICAgICAgICAgICAgICAgICAgICAgIDwvZz4KICAgICAgICAgICAgICAgICAgICAgICAgPC9nPgogICAgICAgICAgICAgICAgICAgIDwvZz4KICAgICAgICAgICAgICAgIDwvZz4KICAgICAgICAgICAgPC9nPgogICAgICAgIDwvZz4KICAgIDwvZz4KPC9zdmc+);
+    }
+
+    /* 單個菜單項目 */
+    .menu-nav-li {
+        position: relative; /* 為下拉選單定位 */
+        margin-left: 20px; /* 菜單項目間距 */
+    }
+
+    /* 菜單文字 */
+    .menu-nav-a {
+        color: #000000;
+        text-decoration: none;
+        font-size: 20px;
+        display: flex;
+        align-items: center; /* 垂直居中 */
+        padding: 10px 15px;
+        cursor: pointer;
+    }
+
+    /* 下拉選單 */
+    .menu-nav-dropdown {
+        display: none; /* 預設隱藏 */
+        position: absolute; /* 絕對定位於菜單下方 */
+        top: 100%;
+        left: 0;
+        background-color: white;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        padding: 10px;
+        z-index: 1;
+    }
+
+    /* 下拉選單項目 */
+    .menu-nav-dropdown ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+    }
+    .menu-nav-dropdown ul li {
+        margin: 5px 0;
+    }
+    .menu-nav-dropdown ul li a {
+        text-decoration: none;
+        color: black;
+        font-size: 16px;
+        padding: 5px 15px;
+        display: block;
+        border-radius: 5px; /* 圓角 */
+    }
+    .menu-nav-dropdown ul li a:hover {
+        background-color: rgba(128, 128, 128, 0.497); /* 滑鼠懸停背景色 */
+        color: black; /* 滑鼠懸停文字顏色 */
+    }
+
+    /* 滑鼠懸停顯示下拉選單 */
+    .menu-nav-li:hover .menu-nav-dropdown {
+        display: block;
+    }
+
+    .menu-order {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: red;
+        color: white;
+        border-radius: 10px;
+    }
     </style>
 </head>
 <body>
     <main>
-        <header class="sticky-top">
-            <div id="lay">
-                <img src="https://www.8way.com.tw/static/img/logo.47158c2.svg" alt="logo">
-                <span>....</span>
-                <a href="file:///C:/Users/Yvonn/OneDrive/%E6%96%87%E4%BB%B6/GitHub/winter-homework/project/main.html" id="logo">回首頁</a>
+            <div class="header-box">
+            <div class="menu-box">
+                <div class="menu-nav">
+                    <a href="main.html" class="menu-logo">
+                        <img src="https://www.8way.com.tw/static/img/logo.47158c2.svg" alt="logo">
+                    </a>
+                    
+                    <ul class="menu-nav-list lxgw-wenkai-mono-tc-regular">
+                        <li class="menu-nav-li lxgw-wenkai-mono-tc-regular">
+                            <a class="menu-nav-a lxgw-wenkai-mono-tc-regular">
+                            安心餐點
+                            <i class="down"></i>
+                            </a>
+                            <div class="menu-nav-dropdown lxgw-wenkai-mono-tc-regular">
+                                <ul>
+                                    <li class="lxgw-wenkai-mono-tc-regular"><a href="page/list.html#section1">鍋貼系列</a></li>
+                                    <li class="lxgw-wenkai-mono-tc-regular"><a href="page/list.html#section2">水餃系列</a></li>
+                                    <li class="lxgw-wenkai-mono-tc-regular"><a href="page/list.html#section3">麵食系列</a></li>
+                                    <li class="lxgw-wenkai-mono-tc-regular"><a href="page/list.html#section4">湯品系列</a></li>
+                                    <li class="lxgw-wenkai-mono-tc-regular"><a href="page/list.html#section5">炒手系列</a></li>
+                                    <li class="lxgw-wenkai-mono-tc-regular"><a href="page/list.html#section6">小菜系列</a></li>
+                                    <li class="lxgw-wenkai-mono-tc-regular"><a href="page/list.html#section7">飲料系列</a></li>
+                                </ul>
+                            </div>
+                        </li>
+                    </ul>
+                    <ul class="menu-nav-list">
+                        <li class="menu-nav-li">
+                            <a class="menu-nav-a lxgw-wenkai-mono-tc-regular">企業簡介</a>
+                        </li>
+                    </ul>
+                    <ul class="menu-nav-list">
+                        <li class="menu-nav-li">
+                            <a class="menu-nav-a lxgw-wenkai-mono-tc-regular">最新消息</a>
+                        </li>
+                    </ul>
+                    <ul class="menu-nav-list">
+                        <li class="menu-nav-li">
+                            <a class="menu-nav-a lxgw-wenkai-mono-tc-regular">加盟專區</a>
+                        </li>
+                    </ul>
+                    <ul class="menu-nav-list">
+                        <li class="menu-nav-li">
+                            <a class="menu-nav-a lxgw-wenkai-mono-tc-regular">聯絡我們</a>
+                        </li>
+                    </ul>
+                    <ul class="menu-nav-list">
+                        <li class="menu-nav-li">
+                            <a href="page/menu.html" class="menu-nav-a lxgw-wenkai-mono-tc-regular menu-order">線上點餐</a>
+                        </li>
+                    </ul>
+                </div>
             </div>
-        </header>
+        </div>
         <div id="layout">
             <div id="sidebar">
                 <h2>安心餐點</h2>
-                <a href="#" onclick="showContent('section1')">鍋貼系列</a>
-                <a href="#" onclick="showContent('section2')">水餃系列</a>
-                <a href="#" onclick="showContent('section3')">麵食系列</a>
-                <a href="#" onclick="showContent('section4')">湯品系列</a>
-                <a href="#" onclick="showContent('section5')">炒手系列</a>
-                <a href="#" onclick="showContent('section6')">小菜系列</a>
-                <a href="#" onclick="showContent('section7')">飲料系列</a>
+                <a href="#" onclick="showContent('section1')"><b>鍋貼系列</b></a>
+                <a href="#" onclick="showContent('section2')"><b>水餃系列</b></a>
+                <a href="#" onclick="showContent('section3')"><b>麵食系列</b></a>
+                <a href="#" onclick="showContent('section4')"><b>湯品系列</b></a>
+                <a href="#" onclick="showContent('section5')"><b>炒手系列</b></a>
+                <a href="#" onclick="showContent('section6')"><b>小菜系列</b></a>
+                <a href="#" onclick="showContent('section7')"><b>飲料系列</b></a>
             </div>
         
             <div id="content">
@@ -472,8 +633,32 @@
 
             // 顯示對應的內容區塊
             const activeSection = document.getElementById(sectionId);
-            activeSection.classList.add('active');
+            if (activeSection) {
+                activeSection.classList.add('active');
+            }
         }
+
+        // 啟動函數：根據 URL hash 設置初始顯示
+        window.addEventListener('DOMContentLoaded', () => {
+            const hash = window.location.hash.substring(1); // 取得 URL 的 hash 值，去掉前面的 #
+            if (hash) {
+                showContent(hash); // 顯示對應區塊
+            }
+        });
+
+        // 監聽 hash 變化（例如使用者手動切換 URL hash）
+        window.addEventListener('hashchange', () => {
+            const hash = window.location.hash.substring(1);
+            if (hash) {
+                showContent(hash);
+            }
+        });
+        // 自動滾動到對應區塊頂端
+        window.onload =function(){window.scrollTo(0,0);}
+            // 確保滾動到頂端
+    setTimeout(() => {
+        window.scrollTo(0, 0);
+    }, 0);
     </script>
 </body>
 </html>

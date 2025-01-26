@@ -517,6 +517,10 @@
             if(selectedContent) {
                 selectedContent.classList.add("active");
             }
+            // 確保滾動到頂端
+            setTimeout(() => {
+                window.scrollTo(0, 0);
+            }, 0);
         }
         // 初始化購物車 (空陣列)
         let cart = [];
