@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic Navigation</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 2px;
+            box-sizing: border-box;
+           
+        }
+        body {
+            display: flex;
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        #sidebar a {
+            display: block;
+            margin: 10px 0;
+            text-decoration: none;
+            color: #333;
+            padding: 10px;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+
+        #sidebar a:hover {
+            background-color: #ddd;
+        }
+
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: peachpuff;
+            z-index: 1000;
+        }
+        #lay {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            background-color: peachpuff;
+            padding: 3px 100px;
+        }
+
+        #logo img {
+            width: 100%;
+            height: auto;
+        }
+        #lay a {
+            text-decoration: none;
+            color: black;
+            flex-basis: 20%;
+            text-align: left;
+            font-weight: bold;
+            font-size: 20px;
+        }
+        main {
+            margin-top: 80px;
+            padding: 20px;
+        }
+        /* 設置容器為 Flex 排版 */
+        #layout {
+            display: flex;
+            height: 100vh; /* 固定高度填滿視窗 */
+            overflow: hidden; /* 確保不會有外部滾動影響 */
+        }
+
+        #sidebar {
+            width: 15%; /* 固定寬度 */
+            min-width: 200px; /* 設置一個最小寬度避免內容壓縮 */
+            background-color: #f8f9fa;
+            padding: 10px;
+            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+            overflow-y: auto;
+            box-sizing: border-box; /* 包括 padding 在內計算寬度 */
+        }
+
+        #content {
+            width: 85%; /* 固定寬度 */
+            padding: 20px;
+            background-color: #ffffff;
+            overflow-y: auto; /* 垂直內容捲動 */
+            overflow-x: hidden; /* 禁止水平溢出，避免撐開 */
+            box-sizing: border-box; /* 包括 padding 在內計算寬度 */
+        }
+
+
+        /* 內容區塊預設隱藏 */
+        .content-section {
+            display: none;
+        }
+
+        /* 顯示的區塊 */
+        .content-section.active {
+            display: block;
+        }
+        span {
+            color: peachpuff;
+        }
+        #logo:hover {
+            color:cornflowerblue;
+        }
+        .card-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+            justify-content: left;
+        }
+        .card {
+            width: calc(20% - 16px);
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 16px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .card img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            margin-bottom: 8px;
+        }
+        .card h3 {
+            font-size: 1.2em;
+            margin: 8px 0;
+        }
+        .card p {
+            font-size: 1em;
+            color: #666;
+        }
+        .card button {
+            background-color: #ff7f50;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 1em;
+            transition: background-color 0.3s ease;
+        }
+        .card button:hover {
+            background-color: #ff5722;
+        }
+        .card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <header class="sticky-top">
+            <div id="lay">
+                <img src="https://www.8way.com.tw/static/img/logo.47158c2.svg" alt="logo">
+                <span>....</span>
+                <a href="file:///C:/Users/Yvonn/OneDrive/%E6%96%87%E4%BB%B6/GitHub/winter-homework/project/main.html" id="logo">回首頁</a>
+            </div>
+        </header>
+        <div id="layout">
+            <div id="sidebar">
+                <h2>安心餐點</h2>
+                <a href="#" onclick="showContent('section1')">鍋貼系列</a>
+                <a href="#" onclick="showContent('section2')">水餃系列</a>
+                <a href="#" onclick="showContent('section3')">麵食系列</a>
+                <a href="#" onclick="showContent('section4')">湯品系列</a>
+                <a href="#" onclick="showContent('section5')">炒手系列</a>
+                <a href="#" onclick="showContent('section6')">小菜系列</a>
+                <a href="#" onclick="showContent('section7')">飲料系列</a>
+            </div>
+        
+            <div id="content">
+                <div id="section1" class="content-section active">
+                    <div id="fried" class="content active">
+                        <div class="card-container">
+                            <div class="card">
+                                <img src="https://www.8way.com.tw/8WayApi/document/da67d54b-bf15-45e8-b58c-fc7f37aa0fef.png" alt="fried">
+                                <h3>招牌鍋貼</h3>
+                                <p>將特選豬後腿肉的嚼勁揉進高麗菜的香甜口感，包入新鮮製作的餃皮再煎至金黃酥脆，成就八方雲集自豪的招牌鍋貼。</p>
+                            </div>
+                            <div class="card">
+                                <img src="https://www.8way.com.tw/8WayApi/document/76b5d0b4-f775-41c6-ad56-0ec2dd8c1756.jpg" alt="fried">
+                                <h3>韭菜鍋貼</h3>
+                                <p>新鮮韭菜的清香引出豬肉甜美，翠綠豐富的內在映襯著金黃外衣，清脆的咬勁添增了每口咬下的味覺記憶。</p>
+                            </div>
+                            <div class="card">
+                                <img src="https://www.8way.com.tw/8WayApi/document/c54dd0cb-68f1-44ea-b622-e7e434cdcc67.png" alt="fried">
+                                <h3>韓式辣味鍋貼</h3>
+                                <p>艷紅的外皮下，包著令人大呼過癮的韓式辣味內餡，香辣後勁帶出每口豐富滋味，令人想不斷一顆接一顆。</p>
+                            </div>
+                            <div class="card">
+                                <img src="https://www.8way.com.tw/8WayApi/document/8e172086-8276-43c2-a1f0-da947e7b3848.png" alt="fried">
+                                <h3>玉米鍋貼</h3>
+                                <p>精選粒粒飽滿的非基因改造玉米，讓自然甜味結合肉汁甘醇，化為金黃餃皮下一份特別的滋味！</p>
+                           </div>
+                            <div class="card">
+                                <img src="https://www.8way.com.tw/8WayApi/document/93c8b3c0-75af-48d7-9480-319e73461fd6.jpg" alt="fried">
+                                <h3>咖哩雞肉鍋貼</h3>
+                                <p>精選咖哩獨特醬料，讓內餡口感更加豐富，咖哩的氣味亦讓味蕾品嚐不同層次的感受，一口咬下唇齒留香、為之動容。鮮嫩多汁的雞腿肉，輔高麗菜，展現出濃郁香甜的滋味。</p>
+                            </div>
+                            <div class="card">
+                                <img src="https://www.8way.com.tw/8WayApi/document/0b02cbe6-ead5-4db2-8c84-3ec3d3aea222.png" alt="fried">
+                                <h3>新蔬食鍋貼</h3>
+                                <p>原料採用全蔬食製作絞肉與高麗菜精心調配而成的內餡，以特製餃皮溫柔包藏，再煎至金黃酥脆，一口咬下，在嘴裡綻放清爽好滋味。</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="section2" class="content-section">
+                    <div id="dumpling" class="content">
+                        <div class="card-container">
+                            <div class="card">
+                                <img src="https://www.8way.com.tw/8WayApi/document/805cec44-9a66-4d3c-9b4d-f264270baf87.png" alt="fried">
+                                <h3>招牌水餃</h3>
+                                <p>一顆7元</p>
+                            </div>
+                            <div class="card">
+                                <img src="https://www.8way.com.tw/8WayApi/document/6df09e42-9ee7-4d54-80ed-52280b0dc85c.png" alt="fried">
+                                <h3>韭菜水餃</h3>
+                                <p>一顆7元</p>
+                            </div>
+                            <div class="card">
+                                <img src="https://www.8way.com.tw/8WayApi/document/64c46920-c23d-4e3d-8986-480302fb531f.png" alt="fried">
+                                <h3>韓式辣味水餃</h3>
+                                <p>一顆7元</p>
+                            </div>
+                            <div class="card">
+                                <img src="https://www.8way.com.tw/8WayApi/document/f79aedee-38a3-42cb-a9d0-d76b8096bf27.png" alt="fried">
+                                <h3>玉米水餃</h3>
+                                <p>一顆7元</p>
+                            </div>
+                            <div class="card">
+                                <img src="https://www.8way.com.tw/8WayApi/document/0decd015-eb0c-42a7-bb38-d75217df0065.png" alt="fried">
+                                <h3>咖哩雞肉水餃</h3>
+                                <p>一顆7元</p>
+                            </div>
+                            <div class="card">
+                                <img src="https://www.8way.com.tw/8WayApi/document/c23d6f8b-a4c5-4d71-86a2-25ca181349f7.png" alt="fried">
+                                <h3>新蔬食水餃</h3>
+                                <p>一顆7.5元</p>
+                            </div>
+                            <div class="card">
+                                <img src="https://www.8way.com.tw/8WayApi/document/0bbe73c3-ab60-4d8d-bb2b-7f4acf496b8d.png" alt="fried">
+                                <h3>鮮蝦水餃</h3>
+                                <p>一顆10.5元</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="section3" class="content-section">
+                    <div id="noodle" class="content">
+                        <div class="card-container">
+                            <div class="card">
+                                <img src="https://www.8way.com.tw/8WayApi/document/325585b8-e8e9-4ca5-b835-203c29175852.png" alt="fried">
+                                <h3>古早味乾麵</h3>
+                                <p>一碗45元</p>
+                            </div>
+                            <div class="card">
+                                <img src="https://www.8way.com.tw/8WayApi/document/5d1a9a9a-a096-492d-8f6e-9499f61dff44.png" alt="fried">
+                                <h3>麻醬乾麵</h3>
+                                <p>一碗55元</p>
+                            </div>
+                            <div class="card">
+                                <img src="https://www.8way.com.tw/8WayApi/document/d19337e3-4f73-496f-bbfe-7ec02cd916cb.png" alt="fried">
+                                <h3>招牌乾麵</h3>
+                                <p>一碗55元</p>
+                            </div>
+                            <div class="card">
+                                <img src="https://www.8way.com.tw/8WayApi/document/fda3897f-ab29-4360-9a6a-354114bfe6e0.png" alt="fried">
+                                <h3>紹辣乾麵</h3>
+                                <p>一碗60元</p>
+                            </div>
+                            <div class="card">
+                                <img src="https://www.8way.com.tw/8WayApi/document/1dfc13ed-4df7-4eb8-ad58-9549c31e67aa.png" alt="fried">
+                                <h3>古早味湯麵</h3>
+                                <p>一碗40元</p>
+                            </div>
+                            <div class="card">
+                                <img src="https://www.8way.com.tw/8WayApi/document/c57ebb05-72a7-4596-b255-ffc3c720a80f.png" alt="fried">
+                                <h3>酸辣湯麵</h3>
+                                <p>一碗70元</p>
+                            </div>
+                            <div class="card">
+                                <img src="https://www.8way.com.tw/8WayApi/document/6fd19f67-1e52-4d79-9087-907e256f4be1.png" alt="fried">
+                                <h3>珍珠餛飩麵</h3>
+                                <p>一碗70元</p>
+                            </div>
+                            <div class="card">
+                                <img src="https://www.8way.com.tw/8WayApi/document/d57616e3-fe9f-44fc-8f41-925e540dba03.png" alt="fried">
+                                <h3>菜肉大餛飩麵</h3>
+                                <p>一碗80元</p>
+                            </div>
+                            <div class="card">
+                                <img src="https://www.8way.com.tw/8WayApi/document/e1f73c2d-0364-42a1-8362-c4d9ca16bea7.png" alt="fried">
+                                <h3>榨菜肉絲麵</h3>
+                                <p>一碗80元</p>
+                            </div>
+                            <div class="card">
+                                <img src="https://www.8way.com.tw/8WayApi/document/a3e77633-cb6a-4685-b420-0910dea00b31.png" alt="fried">
+                                <h3>紹辣珍珠餛飩麵</h3>
+                                <p>一碗80元</p>
+                            </div>
+                            <div class="card">
+                                <img src="https://www.8way.com.tw/8WayApi/document/59cc15cd-bde6-490a-9d33-edbc662dd5a7.png" alt="fried">
+                                <h3>紹辣菜肉大餛飩麵</h3>
+                                <p>一碗90元</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="section4" class="content-section">
+                    <div id="soup" class="content">
+                        <div class="card-container">
+                            <div class="card">
+                                <img src="https://www.8way.com.tw/8WayApi/document/9e0364c0-dfc5-45c6-ada6-3693d233055c.jpg" alt="fried">
+                                <h3>酸辣湯</h3>
+                                <p>一碗35元</p>
+                            </div>
+                            <div class="card">
+                                <img src="https://www.8way.com.tw/8WayApi/document/6199cc3c-76c9-4dda-9d7c-2d47221d169d.png" alt="fried">
+                                <h3>玉米濃湯</h3>
+                                <p>一碗35元</p>
+                            </div>
+                            <div class="card">
+                                <img src="https://www.8way.com.tw/8WayApi/document/180f7443-cdd6-4a0f-b71c-df29ea94b993.png" alt="fried">
+                                <h3>旗魚花枝丸湯</h3>
+                                <p>一碗35元</p>
+                            </div>
+                            <div class="card">
+                                <img src="https://www.8way.com.tw/8WayApi/document/142725ff-ffbf-4fab-9df6-b5420dde05ff.png" alt="fried">
+                                <h3>蕈菇湯</h3>
+                                <p>一碗35元</p>
+                            </div>
+                            <div class="card">
+                                <img src="https://www.8way.com.tw/8WayApi/document/de53559c-be4d-41a9-b3f7-5fece1b85d67.png" alt="fried">
+                                <h3>蘿蔔湯</h3>
+                                <p>一碗35元</p>
+                            </div>
+                            <div class="card">
+                                <img src="https://www.8way.com.tw/8WayApi/document/47812fe7-e9ac-4e57-b880-8de69d67d94e.jpg" alt="fried">
+                                <h3>珍珠餛飩湯</h3>
+                                <p>一碗50元</p>
+                            </div>
+                            <div class="card">
+                                <img src="https://www.8way.com.tw/8WayApi/document/c63e91cb-c183-410a-8016-102ef8cbb106.png" alt="fried">
+                                <h3>菜肉大餛飩湯</h3>
+                                <p>一碗60元</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="section5" class="content-section">
+                    <div id="hand" class="content">
+                        <div class="card-container">
+                            <div class="card">
+                                <img src="https://www.8way.com.tw/8WayApi/document/a4bc3a79-f213-4465-9160-7e306001a363.png" alt="fried">
+                                <h3>珍珠和風炒手</h3>
+                                <p>一碗60元</p>
+                            </div>
+                            <div class="card">
+                                <img src="https://www.8way.com.tw/8WayApi/document/feca678b-f750-4f87-9489-dc331596d28c.png" alt="fried">
+                                <h3>珍珠紅油炒手</h3>
+                                <p>一碗60元</p>
+                            </div>
+                            <div class="card">
+                                <img src="https://www.8way.com.tw/8WayApi/document/09c9b5e9-6334-4258-8537-345aaef08863.png" alt="fried">
+                                <h3>菜肉和風大炒手</h3>
+                                <p>一碗75元</p>
+                            </div>
+                            <div class="card">
+                                <img src="https://www.8way.com.tw/8WayApi/document/ccd39444-a24d-41ef-aa62-6d5c8788e082.png" alt="fried">
+                                <h3>菜肉紅油大炒手</h3>
+                                <p>一碗75元</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="section6" class="content-section">
+                    <div id="veg" class="content">
+                        <div class="card-container">
+                            <div class="card">
+                                <img src="https://www.8way.com.tw/8WayApi/document/cae5067b-efb4-41e9-bb36-ed2e18b064da.png" alt="fried">
+                                <h3>滷蛋</h3>
+                                <p>一份15元</p>
+                            </div>
+                            <div class="card">
+                                <img src="https://www.8way.com.tw/8WayApi/document/ccd39444-a24d-41ef-aa62-6d5c8788e082.png" alt="fried">
+                                <h3>皮蛋豆腐</h3>
+                                <p>一份45元</p>
+                            </div>
+                            <div class="card">
+                                <img src="https://www.8way.com.tw/8WayApi/document/cd29c29f-448f-45f5-b3b6-81e68574ed4d.png" alt="fried">
+                                <h3>黃金豆腐</h3>
+                                <p>一份35元</p>
+                            </div>
+                            <div class="card">
+                                <img src="https://www.8way.com.tw/8WayApi/document/4bf414df-a70f-42b0-b9bb-222985997133.jpg" alt="fried">
+                                <h3>燙青菜</h3>
+                                <p>一份35元</p>
+                            </div>
+                            <div class="card">
+                                <img src="https://www.8way.com.tw/8WayApi/document/6b6ca645-a8e8-4f02-88a2-61791203fc78.png" alt="fried">
+                                <h3>燉蘿蔔</h3>
+                                <p>一份35元</p>
+                            </div>
+                            <div class="card">
+                                <img src="https://www.8way.com.tw/8WayApi/document/d655ae66-3a7a-479b-9098-1071a8aec2d0.png" alt="fried">
+                                <h3>和風秋葵</h3>
+                                <p>一份35元</p>
+                            </div>
+                            <div class="card">
+                                <img src="https://www.8way.com.tw/8WayApi/document/de162a26-d4c3-4431-80eb-f2351700ba40.png" alt="fried">
+                                <h3>薄鹽毛豆</h3>
+                                <p>一份35元</p>
+                            </div>
+                            <div class="card">
+                                <img src="https://www.8way.com.tw/8WayApi/document/096a4c41-e735-48de-889c-e3ea63d98979.png" alt="fried">
+                                <h3>黃金泡菜</h3>
+                                <p>一份30元</p>
+                            </div>
+                            <div class="card">
+                                <img src="https://www.8way.com.tw/8WayApi/document/3297dcca-0d24-414a-8efc-4deea1bcf4c1.png" alt="fried">
+                                <h3>韓式泡菜</h3>
+                                <p>一份30元</p>
+                            </div>
+                            <div class="card">
+                                <img src="https://www.8way.com.tw/8WayApi/document/f21f0fb5-0b7b-415a-871c-b44381fd9e29.png" alt="fried">
+                                <h3>台式泡菜</h3>
+                                <p>一份30元</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="section7" class="content-section">
+                    <div id="drink" class="content">
+                        <div class="card-container">
+                            <div class="card">
+                                <img src="https://www.8way.com.tw/8WayApi/document/38472970-2008-4c6f-bf7b-b8bc255abcc2.jpg" alt="fried">
+                                <h3>香濃豆漿</h3>
+                                <p>一杯20元</p>
+                            </div>
+                            <div class="card">
+                                <img src="https://www.8way.com.tw/8WayApi/document/55a790c1-f0de-4051-9422-0e313950b5ed.jpg" alt="fried">
+                                <h3>香濃豆漿(無加糖)</h3>
+                                <p>一杯20元</p>
+                            </div>
+                            <div class="card">
+                                <img src="https://www.8way.com.tw/8WayApi/document/12e26c92-e373-4029-afee-9712cb4b46fd.jpg" alt="fried">
+                                <h3>黑豆漿</h3>
+                                <p>一杯20元</p>
+                            </div>
+                            <div class="card">
+                                <img src="https://www.8way.com.tw/8WayApi/document/8a1692c1-dab1-45bf-abdb-52a4a2545889.jpg" alt="fried">
+                                <h3>真傳特調紅茶</h3>
+                                <p>一杯20元</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <script>
+        function showContent(sectionId) {
+            // 隱藏所有內容區塊
+            const sections = document.querySelectorAll('.content-section');
+            sections.forEach(section => section.classList.remove('active'));
+
+            // 顯示對應的內容區塊
+            const activeSection = document.getElementById(sectionId);
+            activeSection.classList.add('active');
+        }
+    </script>
+</body>
+</html>
