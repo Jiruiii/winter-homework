@@ -114,12 +114,12 @@
         }
         .card {
             width: calc(20% - 16px);
-            border: 1px solid #ddd;
+            border: 1px solid #DCDCDC;
             border-radius: 8px;
             padding: 16px;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
-            background-color:#FFA07A;
+            background-color:rgb(247, 190, 167);
         }
         .card img {
             width: 100%;
@@ -133,7 +133,7 @@
         }
         .card p {
             font-size: 1em;
-            color: #666;
+            color: #333333;
         }
         .card button {
             background-color: #ff7f50;
@@ -160,14 +160,16 @@
         z-index: 1000; /* 確保在其他元素之上 */
         background-color: #f0f0f0!important; /* 確保背景色覆蓋內容 */
         color: #000000;
-        padding: 10px 0;
+        padding: 0;
         box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* 添加陰影以區分內容 */
     }
     .menu-box {
-        font-size: 30px;
-        padding-left: 12%;
-        padding-right: 5%;
-    }
+    display: flex;
+    align-items: center; /* 垂直置中 */
+    padding-left: 12%;
+    padding-right: 5%;
+    height: 70px; /* 確保高度一致 */
+}
 
     /* Logo 和菜單容器 */
     .menu-nav {
@@ -176,7 +178,11 @@
         padding: 0 20px;
         justify-content: space-between; /* 元素之間均分空間 */
     }
-
+    .menu-nav-list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
     /* Logo */
     .menu-logo img {
         height: 50px; /* 控制 logo 的大小 */
@@ -236,7 +242,7 @@
         padding: 0;
     }
     .menu-nav-dropdown ul li {
-        margin: 5px 0;
+        margin-left: 10px; /* 減少間距 */
     }
     .menu-nav-dropdown ul li a {
         text-decoration: none;
@@ -263,6 +269,8 @@
         background-color: red;
         color: white;
         border-radius: 10px;
+        max-width: 150px; /* 限制按鈕寬度 */
+        text-align: center; /* 按鈕文字居中 */
     }
     </style>
 </head>
