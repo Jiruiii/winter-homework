@@ -164,13 +164,13 @@
         <div id="layout">
             <div id="sidebar">
                 <h2>安心餐點</h2>
-                <a href="#" onclick="showContent('section1')">鍋貼系列</a>
-                <a href="#" onclick="showContent('section2')">水餃系列</a>
-                <a href="#" onclick="showContent('section3')">麵食系列</a>
-                <a href="#" onclick="showContent('section4')">湯品系列</a>
-                <a href="#" onclick="showContent('section5')">炒手系列</a>
-                <a href="#" onclick="showContent('section6')">小菜系列</a>
-                <a href="#" onclick="showContent('section7')">飲料系列</a>
+                <a href="#section1" onclick="showContent('section1')">鍋貼系列</a>
+                <a href="#section2" onclick="showContent('section2')">水餃系列</a>
+                <a href="#section3" onclick="showContent('section3')">麵食系列</a>
+                <a href="#section4" onclick="showContent('section4')">湯品系列</a>
+                <a href="#section5" onclick="showContent('section5')">炒手系列</a>
+                <a href="#section6" onclick="showContent('section6')">小菜系列</a>
+                <a href="#section7" onclick="showContent('section7')">飲料系列</a>
             </div>
         
             <div id="content">
@@ -473,7 +473,17 @@
             // 顯示對應的內容區塊
             const activeSection = document.getElementById(sectionId);
             activeSection.classList.add('active');
+
+            // 滾動到目標區塊
+            activeSection.scrollIntoView({ behavior: 'smooth' });
         }
+        // 當頁面載入時檢查是否有錨點
+        window.onload = function () {
+        const hash = window.location.hash.substring(1); // 獲取 URL 的錨點部分
+        if (hash) {
+            showContent(hash);
+        }
+    };
     </script>
 </body>
 </html>
