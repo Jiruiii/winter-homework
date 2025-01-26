@@ -7,7 +7,7 @@
     <style>
         * {
             margin: 0;
-            padding: 0;
+            padding: 2px;
             box-sizing: border-box;
            
         }
@@ -27,13 +27,7 @@
             flex-wrap: wrap;
             align-items: center;
             background-color: peachpuff;
-            padding: 10px 20px;
-        }
-
-        #logo {
-            flex-basis: 15%; 
-            text-align: center;
-            font-size: 18px;
+            padding: 3px 100px;
         }
 
         #logo img {
@@ -43,15 +37,12 @@
         #layout a {
             text-decoration: none;
             color: black;
-            flex-basis: 10%;
+            flex-basis: 11.111111111111111111111111111111111%;
             text-align: center;
             font-weight: bold;
+            font-size: 20px;
         }
 
-        #cart{
-            flex-basis: 15%; 
-            text-align: right;
-        }
         main {
             margin-top: 80px;
             padding: 20px;
@@ -110,15 +101,20 @@
             box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
         }
         #logo:hover {
-            color: blue;
-            transition: transform 0.3s ease;
+            color:cornflowerblue;
+        }
+        .menu-logo img{
+            width: 100%;
+            height: auto;
         }
     </style>
 </head>
 <body>
     <header class="sticky-top">
         <div id="layout">
-            <a href="file:///C:/Users/Yvonn/OneDrive/%E6%96%87%E4%BB%B6/GitHub/winter-homework/project/main.html" id="logo">八方雲集</a>
+            <a href="file:///C:/Users/Yvonn/OneDrive/%E6%96%87%E4%BB%B6/GitHub/winter-homework/project/main.html" id="logo" class="menu-logo">
+                <img src="https://www.8way.com.tw/static/img/logo.47158c2.svg" alt="logo">
+            </a>
             <a href="#fried" onclick="showContent('#fried')">鍋貼</a>
             <a href="#dumpling" onclick="showContent('#dumpling')">水餃</a>
             <a href="#noodle" onclick="showContent('#noodle')">麵食</a>
@@ -486,7 +482,7 @@
                     <h3>香濃豆漿(無加糖)</h3>
                     <p>一杯20元</p>
                     <br>
-                    <<button class="button" onclick="addToCart('香濃豆漿(無加糖)','20')">加入購物車</button>
+                    <button class="button" onclick="addToCart('香濃豆漿(無加糖)','20')">加入購物車</button>
                 </div>
                 <div class="card">
                     <img src="https://www.8way.com.tw/8WayApi/document/12e26c92-e373-4029-afee-9712cb4b46fd.jpg" alt="fried">
