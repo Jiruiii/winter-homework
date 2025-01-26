@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-<head> <!--test111-->
+<head> 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>menu</title>
@@ -109,22 +109,7 @@
             box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
         }
     </style>
-    <script>
-        window.onload = function() {
-            const hash = window.location.hash || "#fried";
-            showContent(hash);
-        };
-
-        function showContent(id) {
-            const contents = document.querySelectorAll(".content");
-            contents.forEach(content => content.classList.remove("active"));
-
-            const selectedContent = document.querySelector(id);
-            if(selectedContent) {
-                selectedContent.classList.add("active");
-            }
-        }
-    </script>
+    <script src="script.js"></script>
 </head>
 <body>
     <header class="sticky-top">
