@@ -80,7 +80,20 @@
 
             <div class=right>
                 <div class="text-box">
-                    
+                    <div class="text-container">
+                        <div class="swiper-text" data-src="https://www.youtube.com/embed/k5Ab8Bxva_k?si=nfs3_efSFbRlgXl0">
+                            <div class="video-image"><img src="image/main-dumpling.jpg"></div>
+                            <div class="video-text"><h4>水餃培根蔬菜捲</h4><p>結合了水餃的飽滿、培根的香氣和蔬菜的清甜</p></div>
+                        </div>
+                        <div class="swiper-text" data-src="https://www.youtube.com/embed/LwSSdidr45Q?si=nhImXNog_-mnzz2i">
+                            <div class="video-image"><img src="image/roasted-dumpling.jpg"></div>
+                            <div class="video-text"><h4>烤水餃</h4><p>結合了煎餃與烤製的特色，外皮酥脆金黃，內餡多汁鮮美。</p></div>
+                        </div>
+                        <div class="swiper-text" data-src="https://www.youtube.com/embed/uBpp9vMFBZQ?si=PorWd-rMp8gqII5_">
+                            <div class="video-image"><img src="image/korea-dumpling.jpg"></div>
+                            <div class="video-text"><h4>韓式泡菜鮮蝦餃</h4><p>柔軟中帶有一點嚼勁，讓每一口都充滿鮮香與微微辣意。</p></div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -92,7 +105,6 @@
     const swiperWrapper = document.querySelector('.swiper-wrapper');
     const slides = document.querySelectorAll('.swiper-slide');
     let currentIndex = 0; // 當前索引
-
     // 切換圖片的函數
     function showNextSlide() {
         // 更新索引到下一張圖片（循環播放）
@@ -104,9 +116,22 @@
         // 設置 transform 屬性來移動圖片
         swiperWrapper.style.transform = `translateX(${translateX}%)`;
     }
-
     // 每 4 秒切換一次圖片
     setInterval(showNextSlide, 4000);
+    //影片
+    document.addEventListener("DOMContentLoaded", function () {
+    const swiperTexts = document.querySelectorAll(".swiper-text");
+    const videoIframe = document.querySelector(".video-box iframe");
+
+    swiperTexts.forEach(text => {
+        text.addEventListener("click", function () {
+            const newSrc = this.getAttribute("data-src");
+            if (newSrc) {
+                videoIframe.setAttribute("src", newSrc);
+            }
+        });
+    });
+});
     </script>
 </body>
 </html>
