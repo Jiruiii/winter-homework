@@ -33,6 +33,7 @@
         #logo {
             flex-basis: 15%; 
             text-align: center;
+            font-size: 18px;
         }
 
         #logo img {
@@ -108,14 +109,16 @@
             transform: scale(1.05);
             box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
         }
+        #logo:hover {
+            color: blue;
+            transition: transform 0.3s ease;
+        }
     </style>
 </head>
 <body>
     <header class="sticky-top">
         <div id="layout">
-            <div id="logo">
-                八方雲集
-            </div>
+            <a href="file:///C:/Users/Yvonn/OneDrive/%E6%96%87%E4%BB%B6/GitHub/winter-homework/project/main.html" id="logo">八方雲集</a>
             <a href="#fried" onclick="showContent('#fried')">鍋貼</a>
             <a href="#dumpling" onclick="showContent('#dumpling')">水餃</a>
             <a href="#noodle" onclick="showContent('#noodle')">麵食</a>
