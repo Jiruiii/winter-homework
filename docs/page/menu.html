@@ -27,7 +27,7 @@
             flex-wrap: wrap;
             align-items: center;
             background-color: peachpuff;
-            padding: 3px 100px;
+            padding: 3px 10px;
         }
 
         #logo img {
@@ -37,7 +37,7 @@
         #layout a {
             text-decoration: none;
             color: black;
-            flex-basis: 11.111111111111111111111111111111111%;
+            flex-basis:12%;
             text-align: center;
             font-weight: bold;
             font-size: 20px;
@@ -46,6 +46,11 @@
         main {
             margin-top: 80px;
             padding: 20px;
+        }
+
+        #sidebar {
+            margin-top: 80px;
+            padding: 20px; 
         }
 
         .content {
@@ -107,395 +112,89 @@
             width: 100%;
             height: auto;
         }
+        .quantity-control {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            margin: 8px 0;
+        }
+
+        .quantity-control button {
+            background-color: #ddd;
+            border: none;
+            padding: 4px 8px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.2s ease;
+        }
+
+        .quantity-control button:hover {
+            background-color: #ccc;
+        }
+
+        .quantity-control .quantity {
+            font-size: 1.2em;
+            font-weight: bold;
+            width: 40px;
+            text-align: center;
+        }
+
+
+        .sidebar {
+            position: fixed;
+            top: 0;
+            right: -300px; /* 初始位置在畫面外 */
+            width: 300px;
+            height: 100%;
+            background-color: #fff;
+            box-shadow: -2px 0 5px rgba(0, 0, 0, 0.2);
+            transition: right 0.3s ease;
+            padding: 16px;
+            z-index: 1000;
+        }
+
+        .sidebar h2 {
+            margin-top: 0;
+        }
+
+        .sidebar.hidden {
+            right: -300px;
+        }
+
+        .sidebar.active {
+            right: 0; /* 滑入畫面 */
+        }
+
+        .open-btn {
+            position: fixed;
+            top: 50%;
+            right: 0;
+            transform: translateY(-50%);
+            background-color: #ff5722;
+            color: #fff;
+            border: none;
+            padding: 8px 16px;
+            cursor: pointer;
+            z-index: 999;
+            border-radius: 8px 0 0 8px;
+        }
+
+        .close-btn {
+            background-color: #ddd;
+            border: none;
+            padding: 8px;
+            cursor: pointer;
+            border-radius: 4px;
+        }
     </style>
 </head>
 <body>
-    <header class="sticky-top">
-        <div id="layout">
-            <a href="file:///C:/Users/Yvonn/OneDrive/%E6%96%87%E4%BB%B6/GitHub/winter-homework/project/index.html" id="logo" class="menu-logo">
-                <img src="https://www.8way.com.tw/static/img/logo.47158c2.svg" alt="logo">
-            </a>
-            <a href="#fried" onclick="showContent('#fried')">鍋貼</a>
-            <a href="#dumpling" onclick="showContent('#dumpling')">水餃</a>
-            <a href="#noodle" onclick="showContent('#noodle')">麵食</a>
-            <a href="#soup" onclick="showContent('#soup')">湯品</a>
-            <a href="#hand" onclick="showContent('#hand')">炒手</a>
-            <a href="#veg" onclick="showContent('#veg')">小菜</a>
-            <a href="#drink" onclick="showContent('#drink')">飲料</a>
-            <a href="#cart" onclick="showCart()">購物車</a>
-        </div>
-    </header>
-    <main>
-        <div id="fried" class="content active">
-            <div class="card-container">
-                <div class="card">
-                    <img src="https://www.8way.com.tw/8WayApi/document/da67d54b-bf15-45e8-b58c-fc7f37aa0fef.png" alt="fried">
-                    <h3>招牌鍋貼</h3>
-                    <p>一顆7元</p>
-                    <br>
-                    <button class="button" onclick="addToCart('招牌鍋貼','7')">加入購物車</button>
-                </div>
-                <div class="card">
-                    <img src="https://www.8way.com.tw/8WayApi/document/76b5d0b4-f775-41c6-ad56-0ec2dd8c1756.jpg" alt="fried">
-                    <h3>韭菜鍋貼</h3>
-                    <p>一顆7元</p>
-                    <br>
-                    <button class="button" onclick="addToCart('韭菜鍋貼','7')">加入購物車</button>
-                </div>
-                <div class="card">
-                    <img src="https://www.8way.com.tw/8WayApi/document/c54dd0cb-68f1-44ea-b622-e7e434cdcc67.png" alt="fried">
-                    <h3>韓式辣味鍋貼</h3>
-                    <p>一顆7元</p>
-                    <br>
-                    <button class="button" onclick="addToCart('韓式辣味鍋貼','7')">加入購物車</button>
-                </div>
-                <div class="card">
-                    <img src="https://www.8way.com.tw/8WayApi/document/8e172086-8276-43c2-a1f0-da947e7b3848.png" alt="fried">
-                    <h3>玉米鍋貼</h3>
-                    <p>一顆7元</p>
-                    <br>
-                    <button class="button" onclick="addToCart('玉米鍋貼','7')">加入購物車</button>
-                </div>
-                <div class="card">
-                    <img src="https://www.8way.com.tw/8WayApi/document/93c8b3c0-75af-48d7-9480-319e73461fd6.jpg" alt="fried">
-                    <h3>咖哩雞肉鍋貼</h3>
-                    <p>一顆7元</p>
-                    <br>
-                    <button class="button" onclick="addToCart('咖哩雞肉鍋貼','7')">加入購物車</button>
-                </div>
-                <div class="card">
-                    <img src="https://www.8way.com.tw/8WayApi/document/0b02cbe6-ead5-4db2-8c84-3ec3d3aea222.png" alt="fried">
-                    <h3>新蔬食鍋貼</h3>
-                    <p>一顆7元</p>
-                    <br>
-                    <button class="button" onclick="addToCart('新蔬食鍋貼','7')">加入購物車</button>
-                </div>
-            </div>
-        </div>
-        <div id="dumpling" class="content">
-            <div class="card-container">
-                <div class="card">
-                    <img src="https://www.8way.com.tw/8WayApi/document/805cec44-9a66-4d3c-9b4d-f264270baf87.png" alt="fried">
-                    <h3>招牌水餃</h3>
-                    <p>一顆7元</p>
-                    <br>
-                    <button class="button" onclick="addToCart('招牌水餃','7')">加入購物車</button>
-                </div>
-                <div class="card">
-                    <img src="https://www.8way.com.tw/8WayApi/document/6df09e42-9ee7-4d54-80ed-52280b0dc85c.png" alt="fried">
-                    <h3>韭菜水餃</h3>
-                    <p>一顆7元</p>
-                    <br>
-                    <button class="button" onclick="addToCart('韭菜水餃','7')">加入購物車</button>
-                </div>
-                <div class="card">
-                    <img src="https://www.8way.com.tw/8WayApi/document/64c46920-c23d-4e3d-8986-480302fb531f.png" alt="fried">
-                    <h3>韓式辣味水餃</h3>
-                    <p>一顆7元</p>
-                    <br>
-                    <button class="button" onclick="addToCart('韓式辣味水餃','7')">加入購物車</button>
-                </div>
-                <div class="card">
-                    <img src="https://www.8way.com.tw/8WayApi/document/f79aedee-38a3-42cb-a9d0-d76b8096bf27.png" alt="fried">
-                    <h3>玉米水餃</h3>
-                    <p>一顆7元</p>
-                    <br>
-                    <button class="button" onclick="addToCart('玉米水餃','7')">加入購物車</button>
-                </div>
-                <div class="card">
-                    <img src="https://www.8way.com.tw/8WayApi/document/0decd015-eb0c-42a7-bb38-d75217df0065.png" alt="fried">
-                    <h3>咖哩雞肉水餃</h3>
-                    <p>一顆7元</p>
-                    <br>
-                    <button class="button" onclick="addToCart('咖哩雞肉水餃','7')">加入購物車</button>
-                </div>
-                <div class="card">
-                    <img src="https://www.8way.com.tw/8WayApi/document/c23d6f8b-a4c5-4d71-86a2-25ca181349f7.png" alt="fried">
-                    <h3>新蔬食水餃</h3>
-                    <p>一顆7.5元</p>
-                    <br>
-                    <button class="button" onclick="addToCart('新蔬食水餃','7.5')">加入購物車</button>
-                </div>
-                <div class="card">
-                    <img src="https://www.8way.com.tw/8WayApi/document/0bbe73c3-ab60-4d8d-bb2b-7f4acf496b8d.png" alt="fried">
-                    <h3>鮮蝦水餃</h3>
-                    <p>一顆10.5元</p>
-                    <br>
-                    <button class="button" onclick="addToCart('鮮蝦水餃','10.5')">加入購物車</button>
-                </div>
-            </div>
-        </div>
-        <div id="noodle" class="content">
-            <div class="card-container">
-                <div class="card">
-                    <img src="https://www.8way.com.tw/8WayApi/document/325585b8-e8e9-4ca5-b835-203c29175852.png" alt="fried">
-                    <h3>古早味乾麵</h3>
-                    <p>一碗45元</p>
-                    <br>
-                    <button class="button" onclick="addToCart('古早味乾麵','45')">加入購物車</button>
-                </div>
-                <div class="card">
-                    <img src="https://www.8way.com.tw/8WayApi/document/5d1a9a9a-a096-492d-8f6e-9499f61dff44.png" alt="fried">
-                    <h3>麻醬乾麵</h3>
-                    <p>一碗55元</p>
-                    <br>
-                    <button class="button" onclick="addToCart('麻醬乾麵','55')">加入購物車</button>
-                </div>
-                <div class="card">
-                    <img src="https://www.8way.com.tw/8WayApi/document/d19337e3-4f73-496f-bbfe-7ec02cd916cb.png" alt="fried">
-                    <h3>招牌乾麵</h3>
-                    <p>一碗55元</p>
-                    <br>
-                    <button class="button" onclick="addToCart('招牌乾麵','55')">加入購物車</button>
-                </div>
-                <div class="card">
-                    <img src="https://www.8way.com.tw/8WayApi/document/fda3897f-ab29-4360-9a6a-354114bfe6e0.png" alt="fried">
-                    <h3>紹辣乾麵</h3>
-                    <p>一碗60元</p>
-                    <br>
-                    <button class="button" onclick="addToCart('紹辣乾麵','60')">加入購物車</button>
-                </div>
-                <div class="card">
-                    <img src="https://www.8way.com.tw/8WayApi/document/1dfc13ed-4df7-4eb8-ad58-9549c31e67aa.png" alt="fried">
-                    <h3>古早味湯麵</h3>
-                    <p>一碗40元</p>
-                    <br>
-                    <button class="button" onclick="addToCart('古早味湯麵','40')">加入購物車</button>
-                </div>
-                <div class="card">
-                    <img src="https://www.8way.com.tw/8WayApi/document/c57ebb05-72a7-4596-b255-ffc3c720a80f.png" alt="fried">
-                    <h3>酸辣湯麵</h3>
-                    <p>一碗70元</p>
-                    <br>
-                    <button class="button" onclick="addToCart('酸辣湯麵','70')">加入購物車</button>
-                </div>
-                <div class="card">
-                    <img src="https://www.8way.com.tw/8WayApi/document/6fd19f67-1e52-4d79-9087-907e256f4be1.png" alt="fried">
-                    <h3>珍珠餛飩麵</h3>
-                    <p>一碗70元</p>
-                    <br>
-                    <button class="button" onclick="addToCart('珍珠餛飩麵','70')">加入購物車</button>
-                </div>
-                <div class="card">
-                    <img src="https://www.8way.com.tw/8WayApi/document/d57616e3-fe9f-44fc-8f41-925e540dba03.png" alt="fried">
-                    <h3>菜肉大餛飩麵</h3>
-                    <p>一碗80元</p>
-                    <br>
-                    <button class="button" onclick="addToCart('菜肉大餛飩麵','80')">加入購物車</button>
-                </div>
-                <div class="card">
-                    <img src="https://www.8way.com.tw/8WayApi/document/e1f73c2d-0364-42a1-8362-c4d9ca16bea7.png" alt="fried">
-                    <h3>榨菜肉絲麵</h3>
-                    <p>一碗80元</p>
-                    <br>
-                    <button class="button" onclick="addToCart('榨菜肉絲麵','80')">加入購物車</button>
-                </div>
-                <div class="card">
-                    <img src="https://www.8way.com.tw/8WayApi/document/a3e77633-cb6a-4685-b420-0910dea00b31.png" alt="fried">
-                    <h3>紹辣珍珠餛飩麵</h3>
-                    <p>一碗80元</p>
-                    <br>
-                    <button class="button" onclick="addToCart('紹辣珍珠餛飩麵','80')">加入購物車</button>
-                </div>
-                <div class="card">
-                    <img src="https://www.8way.com.tw/8WayApi/document/59cc15cd-bde6-490a-9d33-edbc662dd5a7.png" alt="fried">
-                    <h3>紹辣菜肉大餛飩麵</h3>
-                    <p>一碗90元</p>
-                    <br>
-                    <button class="button" onclick="addToCart('紹辣菜肉大餛飩麵','90')">加入購物車</button>
-                </div>
-            </div>
-            
-        </div>
-        <div id="soup" class="content">
-            <div class="card-container">
-                <div class="card">
-                    <img src="https://www.8way.com.tw/8WayApi/document/9e0364c0-dfc5-45c6-ada6-3693d233055c.jpg" alt="fried">
-                    <h3>酸辣湯</h3>
-                    <p>一碗35元</p>
-                    <br>
-                    <button class="button" onclick="addToCart('酸辣湯','35')">加入購物車</button>
-                </div>
-                <div class="card">
-                    <img src="https://www.8way.com.tw/8WayApi/document/6199cc3c-76c9-4dda-9d7c-2d47221d169d.png" alt="fried">
-                    <h3>玉米濃湯</h3>
-                    <p>一碗35元</p>
-                    <br>
-                    <button class="button" onclick="addToCart('玉米農湯','35')">加入購物車</button>
-                </div>
-                <div class="card">
-                    <img src="https://www.8way.com.tw/8WayApi/document/180f7443-cdd6-4a0f-b71c-df29ea94b993.png" alt="fried">
-                    <h3>旗魚花枝丸湯</h3>
-                    <p>一碗35元</p>
-                    <br>
-                    <button class="button" onclick="addToCart('旗魚花枝丸湯','35')">加入購物車</button>
-                </div>
-                <div class="card">
-                    <img src="https://www.8way.com.tw/8WayApi/document/142725ff-ffbf-4fab-9df6-b5420dde05ff.png" alt="fried">
-                    <h3>蕈菇湯</h3>
-                    <p>一碗35元</p>
-                    <br>
-                    <button class="button" onclick="addToCart('蕈菇湯','35')">加入購物車</button>
-                </div>
-                <div class="card">
-                    <img src="https://www.8way.com.tw/8WayApi/document/de53559c-be4d-41a9-b3f7-5fece1b85d67.png" alt="fried">
-                    <h3>蘿蔔湯</h3>
-                    <p>一碗35元</p>
-                    <br>
-                    <button class="button" onclick="addToCart('蘿蔔湯','35')">加入購物車</button>
-                </div>
-                <div class="card">
-                    <img src="https://www.8way.com.tw/8WayApi/document/47812fe7-e9ac-4e57-b880-8de69d67d94e.jpg" alt="fried">
-                    <h3>珍珠餛飩湯</h3>
-                    <p>一碗50元</p>
-                    <br>
-                    <button class="button" onclick="addToCart('珍珠餛飩湯','50')">加入購物車</button>
-                </div>
-                <div class="card">
-                    <img src="https://www.8way.com.tw/8WayApi/document/c63e91cb-c183-410a-8016-102ef8cbb106.png" alt="fried">
-                    <h3>菜肉大餛飩湯</h3>
-                    <p>一碗60元</p>
-                    <br>
-                    <button class="button" onclick="addToCart('菜肉大餛飩湯','60')">加入購物車</button>
-                </div>
-            </div>
-            
-        </div>
-        <div id="hand" class="content">
-            <div class="card-container">
-                <div class="card">
-                    <img src="https://www.8way.com.tw/8WayApi/document/a4bc3a79-f213-4465-9160-7e306001a363.png" alt="fried">
-                    <h3>珍珠和風炒手</h3>
-                    <p>一碗60元</p>
-                    <br>
-                    <button class="button" onclick="addToCart('珍珠和風炒手','60')">加入購物車</button>
-                </div>
-                <div class="card">
-                    <img src="https://www.8way.com.tw/8WayApi/document/feca678b-f750-4f87-9489-dc331596d28c.png" alt="fried">
-                    <h3>珍珠紅油炒手</h3>
-                    <p>一碗60元</p>
-                    <br>
-                    <button class="button" onclick="addToCart('珍珠紅油炒手','60')">加入購物車</button>
-                </div>
-                <div class="card">
-                    <img src="https://www.8way.com.tw/8WayApi/document/09c9b5e9-6334-4258-8537-345aaef08863.png" alt="fried">
-                    <h3>菜肉和風大炒手</h3>
-                    <p>一碗75元</p>
-                    <br>
-                    <button class="button" onclick="addToCart('菜肉和風大炒手','75')">加入購物車</button>
-                </div>
-                <div class="card">
-                    <img src="https://www.8way.com.tw/8WayApi/document/ccd39444-a24d-41ef-aa62-6d5c8788e082.png" alt="fried">
-                    <h3>菜肉紅油大炒手</h3>
-                    <p>一碗75元</p>
-                    <br>
-                    <button class="button" onclick="addToCart('菜肉紅油大炒手','75')">加入購物車</button>
-                </div>
-            </div>
-        </div>
-        <div id="veg" class="content">
-            <div class="card-container">
-                <div class="card">
-                    <img src="https://www.8way.com.tw/8WayApi/document/cae5067b-efb4-41e9-bb36-ed2e18b064da.png" alt="fried">
-                    <h3>滷蛋</h3>
-                    <p>一份15元</p>
-                    <br>
-                    <button class="button" onclick="addToCart('滷蛋','15')">加入購物車</button>
-                </div>
-                <div class="card">
-                    <img src="https://www.8way.com.tw/8WayApi/document/cd29c29f-448f-45f5-b3b6-81e68574ed4d.png" alt="fried">
-                    <h3>黃金豆腐</h3>
-                    <p>一份35元</p>
-                    <br>
-                    <button class="button" onclick="addToCart('黃金豆腐','35')">加入購物車</button>
-                </div>
-                <div class="card">
-                    <img src="https://www.8way.com.tw/8WayApi/document/4bf414df-a70f-42b0-b9bb-222985997133.jpg" alt="fried">
-                    <h3>燙青菜</h3>
-                    <p>一份35元</p>
-                    <br>
-                    <button class="button" onclick="addToCart('燙青菜','35')">加入購物車</button>
-                </div>
-                <div class="card">
-                    <img src="https://www.8way.com.tw/8WayApi/document/6b6ca645-a8e8-4f02-88a2-61791203fc78.png" alt="fried">
-                    <h3>燉蘿蔔</h3>
-                    <p>一份35元</p>
-                    <br>
-                    <button class="button" onclick="addToCart('燉蘿蔔','35')">加入購物車</button>
-                </div>
-                <div class="card">
-                    <img src="https://www.8way.com.tw/8WayApi/document/d655ae66-3a7a-479b-9098-1071a8aec2d0.png" alt="fried">
-                    <h3>和風秋葵</h3>
-                    <p>一份35元</p>
-                    <br>
-                    <button class="button" onclick="addToCart('和風秋葵','35')">加入購物車</button>
-                </div>
-                <div class="card">
-                    <img src="https://www.8way.com.tw/8WayApi/document/de162a26-d4c3-4431-80eb-f2351700ba40.png" alt="fried">
-                    <h3>薄鹽毛豆</h3>
-                    <p>一份35元</p>
-                    <br>
-                    <button class="button" onclick="addToCart('薄鹽毛豆','35')">加入購物車</button>
-                </div>
-                <div class="card">
-                    <img src="https://www.8way.com.tw/8WayApi/document/096a4c41-e735-48de-889c-e3ea63d98979.png" alt="fried">
-                    <h3>黃金泡菜</h3>
-                    <p>一份30元</p>
-                    <br>
-                    <button class="button" onclick="addToCart('黃金泡菜','30')">加入購物車</button>
-                </div>
-                <div class="card">
-                    <img src="https://www.8way.com.tw/8WayApi/document/3297dcca-0d24-414a-8efc-4deea1bcf4c1.png" alt="fried">
-                    <h3>韓式泡菜</h3>
-                    <p>一份30元</p>
-                    <br>
-                    <button class="button" onclick="addToCart('韓式泡菜','30')">加入購物車</button>
-                </div>
-                <div class="card">
-                    <img src="https://www.8way.com.tw/8WayApi/document/f21f0fb5-0b7b-415a-871c-b44381fd9e29.png" alt="fried">
-                    <h3>台式泡菜</h3>
-                    <p>一份30元</p>
-                    <br>
-                    <button class="button" onclick="addToCart('台式泡菜','30')">加入購物車</button>
-                </div>
-            </div>
-            
-        </div>
-        <div id="drink" class="content">
-            <div class="card-container">
-                <div class="card">
-                    <img src="https://www.8way.com.tw/8WayApi/document/38472970-2008-4c6f-bf7b-b8bc255abcc2.jpg" alt="fried">
-                    <h3>香濃豆漿</h3>
-                    <p>一杯20元</p>
-                    <br>
-                    <button class="button" onclick="addToCart('香濃豆漿','20')">加入購物車</button>
-                </div>
-                <div class="card">
-                    <img src="https://www.8way.com.tw/8WayApi/document/55a790c1-f0de-4051-9422-0e313950b5ed.jpg" alt="fried">
-                    <h3>香濃豆漿(無加糖)</h3>
-                    <p>一杯20元</p>
-                    <br>
-                    <button class="button" onclick="addToCart('香濃豆漿(無加糖)','20')">加入購物車</button>
-                </div>
-                <div class="card">
-                    <img src="https://www.8way.com.tw/8WayApi/document/12e26c92-e373-4029-afee-9712cb4b46fd.jpg" alt="fried">
-                    <h3>黑豆漿</h3>
-                    <p>一杯20元</p>
-                    <br>
-                    <button class="button" onclick="addToCart('黑豆漿','20')">加入購物車</button>
-                </div>
-                <div class="card">
-                    <img src="https://www.8way.com.tw/8WayApi/document/8a1692c1-dab1-45bf-abdb-52a4a2545889.jpg" alt="fried">
-                    <h3>真傳特調紅茶</h3>
-                    <p>一杯20元</p>
-                    <br>
-                    <button class="button" onclick="addToCart('真傳特調紅茶','20')">加入購物車</button>
-                </div>
-            </div>
-            
-        </div>
-    </main>
     <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            // 確保事件在 DOM 完全加載後綁定
+            console.log("DOM fully loaded and parsed.");
+            // 你的代碼邏輯
+        });
         //預設菜單網頁為鍋貼
         window.onload = function() {
             const hash = window.location.hash || "#fried";
@@ -510,50 +209,793 @@
             if(selectedContent) {
                 selectedContent.classList.add("active");
             }
-            // 確保滾動到頂端
-            setTimeout(() => {
-                window.scrollTo(0, 0);
-            }, 0);
         }
-        // 初始化購物車 (空陣列)
-        let cart = [];
 
-        // 函式：新增食物到購物車
-        function addToCart(foodName, price) {
-            // 把食物作為一個物件加入購物車
-            cart.push({
-                name: foodName,
-                price: price
+        document.addEventListener("DOMContentLoaded", function () {
+            const cart = [];
+            const cartContainer = document.getElementById("cart-container");
+            const cartItems = document.getElementById("cart-items");
+            const totalPriceElement = document.getElementById("total-price");
+
+            // 購物車按鈕處理 (顯示/隱藏購物車)
+            document.getElementById("cart").addEventListener("click", () => {
+                cartContainer.classList.toggle("hidden"); // 顯示或隱藏購物車內容
             });
-            alert(`${foodName} 已新增到購物車！`);
-        }
 
-        //函式：顯示購物車內容
-        function displayCart() {
-            alert("購物車內容：");
-            cart.forEach((item, index) => {
-                alert(`${index + 1}. ${item.name} - 單價: $${item.price}`);
+            // 為每張卡片初始化數量控制
+            document.querySelectorAll(".card").forEach((card) => {
+                const quantityElement = card.querySelector(".quantity");
+
+                // 調整數量按鈕
+                card.querySelectorAll(".change-quantity").forEach((button) => {
+                    button.addEventListener("click", () => {
+                    const change = parseInt(button.dataset.change, 10);
+                    let currentQuantity = parseInt(quantityElement.textContent, 10);
+                    currentQuantity = Math.max(1, currentQuantity + change); // 確保數量最少為 1
+                    quantityElement.textContent = currentQuantity;
+                    });
+                });
+
+                // 加入購物車按鈕
+                card.querySelector(".button").addEventListener("click", () => {
+                    const name = card.querySelector("h3").textContent;
+                    const priceText = card.querySelector("p").textContent;
+                    const price = parseFloat(priceText.match(/\d+\.?\d*/)[0]);
+                    const quantity = parseInt(quantityElement.textContent, 10);
+                    alert(`${name} *${quantity}已新增到購物車！`);
+                    const existingItem = cart.find((item) => item.name === name);
+                    if (existingItem) {
+                        existingItem.quantity += quantity;
+                    } else {
+                        cart.push({ name, price, quantity });
+                    }
+
+                updateCart();
+                });
             });
-        }
 
-        
-        function showCart() {
+            // 更新購物車
+            function updateCart() {
+                cartItems.innerHTML = "";
+                let total = 0;
+
+                cart.forEach((item) => {
+                    const li = document.createElement("li");
+                    li.innerHTML = `${item.name} x${item.quantity}
+                    <span>${item.price * item.quantity} 元</span>`;
+                    cartItems.appendChild(li);
+                    total += item.price * item.quantity;
+                });
+
+                totalPriceElement.textContent = `總金額: ${total} 元`;
+                return(total);
+            }
+
+        // 結帳
+        document.getElementById("checkout").addEventListener("click", () => {
             if (cart.length === 0) {
                 alert("購物車是空的！");
-                return;
-        }
+            } else {
+                const total = updateCart(); // 呼叫 updateCart 並取得總金額
+                alert(`總金額: ${total} 元，感謝購買！`); // 使用 total
+                cart.length = 0;
+                updateCart(); // 再次清空購物車並更新顯示
+                cartContainer.classList.add("hidden");
+            }
+        });
+        const sidebar = document.getElementById("sidebar");
+        const openSidebarButton = document.getElementById("open-sidebar");
+        const closeSidebarButton = document.getElementById("close-sidebar");
 
-            let message = "購物車內容：\n";
-            let total = 0;
-
-            cart.forEach((item, index) => {
-                message += `${index + 1}. ${item.name} - $${item.price}\n`;
-                total += Number(item.price);
+        // 打開側邊欄
+        openSidebarButton.addEventListener("click", () => {
+            sidebar.classList.add("active");
         });
 
-            message += `\n總金額：$${total}`;
-            alert(message);
-        }
+        // 關閉側邊欄
+        closeSidebarButton.addEventListener("click", () => {
+            sidebar.classList.remove("active");
+        });
+
+    });
+
+
     </script>
+    <div id="sidebar" class="sidebar hidden">
+        <button id="close-sidebar" class="close-btn">←</button>
+        <h2>購物車</h2>
+        <ul id="cart-items"></ul>
+        <div id="total-price">總金額: 0 元</div>
+        <button id="checkout">結帳</button>
+    </div>
+    
+    <button id="open-sidebar" class="open-btn">購物車 →</button>
+    
+    <header class="sticky-top">
+        <div id="layout">
+            <a href="file:///C:/Users/Yvonn/OneDrive/%E6%96%87%E4%BB%B6/GitHub/winter-homework/docs/index.html" id="logo" class="menu-logo">
+                <img src="https://www.8way.com.tw/static/img/logo.47158c2.svg" alt="logo">
+            </a>
+            <a href="#fried" onclick="showContent('#fried')">鍋貼</a>
+            <a href="#dumpling" onclick="showContent('#dumpling')">水餃</a>
+            <a href="#noodle" onclick="showContent('#noodle')">麵食</a>
+            <a href="#soup" onclick="showContent('#soup')">湯品</a>
+            <a href="#hand" onclick="showContent('#hand')">炒手</a>
+            <a href="#veg" onclick="showContent('#veg')">小菜</a>
+            <a href="#drink" onclick="showContent('#drink')">飲料</a>
+            <a href="#cart" id="cart" onclick="updateCart()"></a>
+        </div>
+    </header>
+    <main>
+        <div id="fried" class="content active">
+            <div class="card-container">
+                <div class="card">
+                    <img src="https://www.8way.com.tw/8WayApi/document/da67d54b-bf15-45e8-b58c-fc7f37aa0fef.png" alt="fried">
+                    <h3>招牌鍋貼</h3>
+                    <p>一顆7元</p>
+                    <div class="quantity-control">
+                      <button class="change-quantity" data-change="-10">-10</button>
+                      <button class="change-quantity" data-change="-1">-1</button>
+                      <span class="quantity">1</span>
+                      <button class="change-quantity" data-change="1">+1</button>
+                      <button class="change-quantity" data-change="10">+10</button>
+                  </div>
+                  <button class="button" onclick="addEventListener">加入購物車</button>
+                </div>
+                <div class="card">
+                    <img src="https://www.8way.com.tw/8WayApi/document/76b5d0b4-f775-41c6-ad56-0ec2dd8c1756.jpg" alt="fried">
+                    <h3>韭菜鍋貼</h3>
+                    <p>一顆7元</p>
+                    <div class="quantity-control">
+                        <button class="change-quantity" data-change="-10">-10</button>
+                        <button class="change-quantity" data-change="-1">-1</button>
+                        <span class="quantity">1</span>
+                        <button class="change-quantity" data-change="1">+1</button>
+                        <button class="change-quantity" data-change="10">+10</button>
+                    </div>
+                    <button class="button" onclick="addEventListener">加入購物車</button>
+                </div>
+                <div class="card">
+                    <img src="https://www.8way.com.tw/8WayApi/document/c54dd0cb-68f1-44ea-b622-e7e434cdcc67.png" alt="fried">
+                    <h3>韓式辣味鍋貼</h3>
+                    <p>一顆7元</p>
+                    <div class="quantity-control">
+                        <button class="change-quantity" data-change="-10">-10</button>
+                        <button class="change-quantity" data-change="-1">-1</button>
+                        <span class="quantity">1</span>
+                        <button class="change-quantity" data-change="1">+1</button>
+                        <button class="change-quantity" data-change="10">+10</button>
+                    </div>
+                    <button class="button" onclick="addEventListener">加入購物車</button>
+                </div>
+                <div class="card">
+                    <img src="https://www.8way.com.tw/8WayApi/document/8e172086-8276-43c2-a1f0-da947e7b3848.png" alt="fried">
+                    <h3>玉米鍋貼</h3>
+                    <p>一顆7元</p>
+                    <div class="quantity-control">
+                        <button class="change-quantity" data-change="-10">-10</button>
+                        <button class="change-quantity" data-change="-1">-1</button>
+                        <span class="quantity">1</span>
+                        <button class="change-quantity" data-change="1">+1</button>
+                        <button class="change-quantity" data-change="10">+10</button>
+                    </div>
+                    <button class="button" onclick="addEventListener">加入購物車</button>
+                </div>
+                <div class="card">
+                    <img src="https://www.8way.com.tw/8WayApi/document/93c8b3c0-75af-48d7-9480-319e73461fd6.jpg" alt="fried">
+                    <h3>咖哩雞肉鍋貼</h3>
+                    <p>一顆7元</p>
+                    <div class="quantity-control">
+                        <button class="change-quantity" data-change="-10">-10</button>
+                        <button class="change-quantity" data-change="-1">-1</button>
+                        <span class="quantity">1</span>
+                        <button class="change-quantity" data-change="1">+1</button>
+                        <button class="change-quantity" data-change="10">+10</button>
+                    </div>
+                    <button class="button" onclick="addEventListener">加入購物車</button>
+                </div>
+                <div class="card">
+                    <img src="https://www.8way.com.tw/8WayApi/document/0b02cbe6-ead5-4db2-8c84-3ec3d3aea222.png" alt="fried">
+                    <h3>新蔬食鍋貼</h3>
+                    <p>一顆7元</p>
+                    <div class="quantity-control">
+                        <button class="change-quantity" data-change="-10">-10</button>
+                        <button class="change-quantity" data-change="-1">-1</button>
+                        <span class="quantity">1</span>
+                        <button class="change-quantity" data-change="1">+1</button>
+                        <button class="change-quantity" data-change="10">+10</button>
+                    </div>
+                    <button class="button" onclick="addEventListener">加入購物車</button>
+                </div>
+            </div>
+        </div>
+        <div id="dumpling" class="content">
+            <div class="card-container">
+                <div class="card">
+                    <img src="https://www.8way.com.tw/8WayApi/document/805cec44-9a66-4d3c-9b4d-f264270baf87.png" alt="fried">
+                    <h3>招牌水餃</h3>
+                    <p>一顆7元</p>
+                    <div class="quantity-control">
+                        <button class="change-quantity" data-change="-10">-10</button>
+                        <button class="change-quantity" data-change="-1">-1</button>
+                        <span class="quantity">1</span>
+                        <button class="change-quantity" data-change="1">+1</button>
+                        <button class="change-quantity" data-change="10">+10</button>
+                    </div>
+                    <button class="button" onclick="addEventListener">加入購物車</button>
+                </div>
+                <div class="card">
+                    <img src="https://www.8way.com.tw/8WayApi/document/6df09e42-9ee7-4d54-80ed-52280b0dc85c.png" alt="fried">
+                    <h3>韭菜水餃</h3>
+                    <p>一顆7元</p>
+                    <div class="quantity-control">
+                        <button class="change-quantity" data-change="-10">-10</button>
+                        <button class="change-quantity" data-change="-1">-1</button>
+                        <span class="quantity">1</span>
+                        <button class="change-quantity" data-change="1">+1</button>
+                        <button class="change-quantity" data-change="10">+10</button>
+                    </div>
+                    <button class="button" onclick="addEventListener">加入購物車</button>
+                </div>
+                <div class="card">
+                    <img src="https://www.8way.com.tw/8WayApi/document/64c46920-c23d-4e3d-8986-480302fb531f.png" alt="fried">
+                    <h3>韓式辣味水餃</h3>
+                    <p>一顆7元</p>
+                    <div class="quantity-control">
+                        <button class="change-quantity" data-change="-10">-10</button>
+                        <button class="change-quantity" data-change="-1">-1</button>
+                        <span class="quantity">1</span>
+                        <button class="change-quantity" data-change="1">+1</button>
+                        <button class="change-quantity" data-change="10">+10</button>
+                    </div>
+                    <button class="button" onclick="addEventListener">加入購物車</button>
+                </div>
+                <div class="card">
+                    <img src="https://www.8way.com.tw/8WayApi/document/f79aedee-38a3-42cb-a9d0-d76b8096bf27.png" alt="fried">
+                    <h3>玉米水餃</h3>
+                    <p>一顆7元</p>
+                    <div class="quantity-control">
+                        <button class="change-quantity" data-change="-10">-10</button>
+                        <button class="change-quantity" data-change="-1">-1</button>
+                        <span class="quantity">1</span>
+                        <button class="change-quantity" data-change="1">+1</button>
+                        <button class="change-quantity" data-change="10">+10</button>
+                    </div>
+                    <button class="button" onclick="addEventListener">加入購物車</button>
+                </div>
+                <div class="card">
+                    <img src="https://www.8way.com.tw/8WayApi/document/0decd015-eb0c-42a7-bb38-d75217df0065.png" alt="fried">
+                    <h3>咖哩雞肉水餃</h3>
+                    <p>一顆7元</p>
+                    <div class="quantity-control">
+                        <button class="change-quantity" data-change="-10">-10</button>
+                        <button class="change-quantity" data-change="-1">-1</button>
+                        <span class="quantity">1</span>
+                        <button class="change-quantity" data-change="1">+1</button>
+                        <button class="change-quantity" data-change="10">+10</button>
+                    </div>
+                    <button class="button" onclick="addEventListener">加入購物車</button>
+                </div>
+                <div class="card">
+                    <img src="https://www.8way.com.tw/8WayApi/document/c23d6f8b-a4c5-4d71-86a2-25ca181349f7.png" alt="fried">
+                    <h3>新蔬食水餃</h3>
+                    <p>一顆7.5元</p>
+                    <div class="quantity-control">
+                        <button class="change-quantity" data-change="-10">-10</button>
+                        <button class="change-quantity" data-change="-1">-1</button>
+                        <span class="quantity">1</span>
+                        <button class="change-quantity" data-change="1">+1</button>
+                        <button class="change-quantity" data-change="10">+10</button>
+                    </div>
+                    <button class="button" onclick="addEventListener">加入購物車</button>
+                </div>
+                <div class="card">
+                    <img src="https://www.8way.com.tw/8WayApi/document/0bbe73c3-ab60-4d8d-bb2b-7f4acf496b8d.png" alt="fried">
+                    <h3>鮮蝦水餃</h3>
+                    <p>一顆10.5元</p>
+                    <div class="quantity-control">
+                        <button class="change-quantity" data-change="-10">-10</button>
+                        <button class="change-quantity" data-change="-1">-1</button>
+                        <span class="quantity">1</span>
+                        <button class="change-quantity" data-change="1">+1</button>
+                        <button class="change-quantity" data-change="10">+10</button>
+                    </div>
+                    <button class="button" onclick="addEventListener">加入購物車</button>
+                </div>
+            </div>
+        </div>
+        <div id="noodle" class="content">
+            <div class="card-container">
+                <div class="card">
+                    <img src="https://www.8way.com.tw/8WayApi/document/325585b8-e8e9-4ca5-b835-203c29175852.png" alt="fried">
+                    <h3>古早味乾麵</h3>
+                    <p>一碗45元</p>
+                    <div class="quantity-control">
+                        <button class="change-quantity" data-change="-10">-10</button>
+                        <button class="change-quantity" data-change="-1">-1</button>
+                        <span class="quantity">1</span>
+                        <button class="change-quantity" data-change="1">+1</button>
+                        <button class="change-quantity" data-change="10">+10</button>
+                    </div>
+                    <button class="button" onclick="addEventListener">加入購物車</button>
+                </div>
+                <div class="card">
+                    <img src="https://www.8way.com.tw/8WayApi/document/5d1a9a9a-a096-492d-8f6e-9499f61dff44.png" alt="fried">
+                    <h3>麻醬乾麵</h3>
+                    <p>一碗55元</p>
+                    <div class="quantity-control">
+                        <button class="change-quantity" data-change="-10">-10</button>
+                        <button class="change-quantity" data-change="-1">-1</button>
+                        <span class="quantity">1</span>
+                        <button class="change-quantity" data-change="1">+1</button>
+                        <button class="change-quantity" data-change="10">+10</button>
+                    </div>
+                    <button class="button" onclick="addEventListener">加入購物車</button>
+                </div>
+                <div class="card">
+                    <img src="https://www.8way.com.tw/8WayApi/document/d19337e3-4f73-496f-bbfe-7ec02cd916cb.png" alt="fried">
+                    <h3>招牌乾麵</h3>
+                    <p>一碗55元</p>
+                    <div class="quantity-control">
+                        <button class="change-quantity" data-change="-10">-10</button>
+                        <button class="change-quantity" data-change="-1">-1</button>
+                        <span class="quantity">1</span>
+                        <button class="change-quantity" data-change="1">+1</button>
+                        <button class="change-quantity" data-change="10">+10</button>
+                    </div>
+                    <button class="button" onclick="addEventListener">加入購物車</button>
+                </div>
+                <div class="card">
+                    <img src="https://www.8way.com.tw/8WayApi/document/fda3897f-ab29-4360-9a6a-354114bfe6e0.png" alt="fried">
+                    <h3>紹辣乾麵</h3>
+                    <p>一碗60元</p>
+                    <div class="quantity-control">
+                        <button class="change-quantity" data-change="-10">-10</button>
+                        <button class="change-quantity" data-change="-1">-1</button>
+                        <span class="quantity">1</span>
+                        <button class="change-quantity" data-change="1">+1</button>
+                        <button class="change-quantity" data-change="10">+10</button>
+                    </div>
+                    <button class="button" onclick="addEventListener">加入購物車</button>
+                </div>
+                <div class="card">
+                    <img src="https://www.8way.com.tw/8WayApi/document/1dfc13ed-4df7-4eb8-ad58-9549c31e67aa.png" alt="fried">
+                    <h3>古早味湯麵</h3>
+                    <p>一碗40元</p>
+                    <div class="quantity-control">
+                        <button class="change-quantity" data-change="-10">-10</button>
+                        <button class="change-quantity" data-change="-1">-1</button>
+                        <span class="quantity">1</span>
+                        <button class="change-quantity" data-change="1">+1</button>
+                        <button class="change-quantity" data-change="10">+10</button>
+                    </div>
+                    <button class="button" onclick="addEventListener">加入購物車</button>
+                </div>
+                <div class="card">
+                    <img src="https://www.8way.com.tw/8WayApi/document/c57ebb05-72a7-4596-b255-ffc3c720a80f.png" alt="fried">
+                    <h3>酸辣湯麵</h3>
+                    <p>一碗70元</p>
+                    <div class="quantity-control">
+                        <button class="change-quantity" data-change="-10">-10</button>
+                        <button class="change-quantity" data-change="-1">-1</button>
+                        <span class="quantity">1</span>
+                        <button class="change-quantity" data-change="1">+1</button>
+                        <button class="change-quantity" data-change="10">+10</button>
+                    </div>
+                    <button class="button" onclick="addEventListener">加入購物車</button>
+                </div>
+                <div class="card">
+                    <img src="https://www.8way.com.tw/8WayApi/document/6fd19f67-1e52-4d79-9087-907e256f4be1.png" alt="fried">
+                    <h3>珍珠餛飩麵</h3>
+                    <p>一碗70元</p>
+                    <div class="quantity-control">
+                        <button class="change-quantity" data-change="-10">-10</button>
+                        <button class="change-quantity" data-change="-1">-1</button>
+                        <span class="quantity">1</span>
+                        <button class="change-quantity" data-change="1">+1</button>
+                        <button class="change-quantity" data-change="10">+10</button>
+                    </div>
+                    <button class="button" onclick="addEventListener">加入購物車</button>
+                </div>
+                <div class="card">
+                    <img src="https://www.8way.com.tw/8WayApi/document/d57616e3-fe9f-44fc-8f41-925e540dba03.png" alt="fried">
+                    <h3>菜肉大餛飩麵</h3>
+                    <p>一碗80元</p>
+                    <div class="quantity-control">
+                        <button class="change-quantity" data-change="-10">-10</button>
+                        <button class="change-quantity" data-change="-1">-1</button>
+                        <span class="quantity">1</span>
+                        <button class="change-quantity" data-change="1">+1</button>
+                        <button class="change-quantity" data-change="10">+10</button>
+                    </div>
+                    <button class="button" onclick="addEventListener">加入購物車</button>
+                </div>
+                <div class="card">
+                    <img src="https://www.8way.com.tw/8WayApi/document/e1f73c2d-0364-42a1-8362-c4d9ca16bea7.png" alt="fried">
+                    <h3>榨菜肉絲麵</h3>
+                    <p>一碗80元</p>
+                    <div class="quantity-control">
+                        <button class="change-quantity" data-change="-10">-10</button>
+                        <button class="change-quantity" data-change="-1">-1</button>
+                        <span class="quantity">1</span>
+                        <button class="change-quantity" data-change="1">+1</button>
+                        <button class="change-quantity" data-change="10">+10</button>
+                    </div>
+                    <button class="button" onclick="addEventListener">加入購物車</button>
+                </div>
+                <div class="card">
+                    <img src="https://www.8way.com.tw/8WayApi/document/a3e77633-cb6a-4685-b420-0910dea00b31.png" alt="fried">
+                    <h3>紹辣珍珠餛飩麵</h3>
+                    <p>一碗80元</p>
+                    <div class="quantity-control">
+                        <button class="change-quantity" data-change="-10">-10</button>
+                        <button class="change-quantity" data-change="-1">-1</button>
+                        <span class="quantity">1</span>
+                        <button class="change-quantity" data-change="1">+1</button>
+                        <button class="change-quantity" data-change="10">+10</button>
+                    </div>
+                    <button class="button" onclick="addEventListener">加入購物車</button>
+                </div>
+                <div class="card">
+                    <img src="https://www.8way.com.tw/8WayApi/document/59cc15cd-bde6-490a-9d33-edbc662dd5a7.png" alt="fried">
+                    <h3>紹辣菜肉大餛飩麵</h3>
+                    <p>一碗90元</p>
+                    <div class="quantity-control">
+                        <button class="change-quantity" data-change="-10">-10</button>
+                        <button class="change-quantity" data-change="-1">-1</button>
+                        <span class="quantity">1</span>
+                        <button class="change-quantity" data-change="1">+1</button>
+                        <button class="change-quantity" data-change="10">+10</button>
+                    </div>
+                    <button class="button" onclick="addEventListener">加入購物車</button>
+                </div>
+            </div>
+            
+        </div>
+        <div id="soup" class="content">
+            <div class="card-container">
+                <div class="card">
+                    <img src="https://www.8way.com.tw/8WayApi/document/9e0364c0-dfc5-45c6-ada6-3693d233055c.jpg" alt="fried">
+                    <h3>酸辣湯</h3>
+                    <p>一碗35元</p>
+                    <div class="quantity-control">
+                        <button class="change-quantity" data-change="-10">-10</button>
+                        <button class="change-quantity" data-change="-1">-1</button>
+                        <span class="quantity">1</span>
+                        <button class="change-quantity" data-change="1">+1</button>
+                        <button class="change-quantity" data-change="10">+10</button>
+                    </div>
+                    <button class="button" onclick="addEventListener">加入購物車</button>
+                </div>
+                <div class="card">
+                    <img src="https://www.8way.com.tw/8WayApi/document/6199cc3c-76c9-4dda-9d7c-2d47221d169d.png" alt="fried">
+                    <h3>玉米濃湯</h3>
+                    <p>一碗35元</p>
+                    <div class="quantity-control">
+                        <button class="change-quantity" data-change="-10">-10</button>
+                        <button class="change-quantity" data-change="-1">-1</button>
+                        <span class="quantity">1</span>
+                        <button class="change-quantity" data-change="1">+1</button>
+                        <button class="change-quantity" data-change="10">+10</button>
+                    </div>
+                    <button class="button" onclick="addEventListener">加入購物車</button>
+                </div>
+                <div class="card">
+                    <img src="https://www.8way.com.tw/8WayApi/document/180f7443-cdd6-4a0f-b71c-df29ea94b993.png" alt="fried">
+                    <h3>旗魚花枝丸湯</h3>
+                    <p>一碗35元</p>
+                    <div class="quantity-control">
+                        <button class="change-quantity" data-change="-10">-10</button>
+                        <button class="change-quantity" data-change="-1">-1</button>
+                        <span class="quantity">1</span>
+                        <button class="change-quantity" data-change="1">+1</button>
+                        <button class="change-quantity" data-change="10">+10</button>
+                    </div>
+                    <button class="button" onclick="addEventListener">加入購物車</button>
+                </div>
+                <div class="card">
+                    <img src="https://www.8way.com.tw/8WayApi/document/142725ff-ffbf-4fab-9df6-b5420dde05ff.png" alt="fried">
+                    <h3>蕈菇湯</h3>
+                    <p>一碗35元</p>
+                    <div class="quantity-control">
+                        <button class="change-quantity" data-change="-10">-10</button>
+                        <button class="change-quantity" data-change="-1">-1</button>
+                        <span class="quantity">1</span>
+                        <button class="change-quantity" data-change="1">+1</button>
+                        <button class="change-quantity" data-change="10">+10</button>
+                    </div>
+                    <button class="button" onclick="addEventListener">加入購物車</button>
+                </div>
+                <div class="card">
+                    <img src="https://www.8way.com.tw/8WayApi/document/de53559c-be4d-41a9-b3f7-5fece1b85d67.png" alt="fried">
+                    <h3>蘿蔔湯</h3>
+                    <p>一碗35元</p>
+                    <div class="quantity-control">
+                        <button class="change-quantity" data-change="-10">-10</button>
+                        <button class="change-quantity" data-change="-1">-1</button>
+                        <span class="quantity">1</span>
+                        <button class="change-quantity" data-change="1">+1</button>
+                        <button class="change-quantity" data-change="10">+10</button>
+                    </div>
+                    <button class="button" onclick="addEventListener">加入購物車</button>
+                </div>
+                <div class="card">
+                    <img src="https://www.8way.com.tw/8WayApi/document/47812fe7-e9ac-4e57-b880-8de69d67d94e.jpg" alt="fried">
+                    <h3>珍珠餛飩湯</h3>
+                    <p>一碗50元</p>
+                    <div class="quantity-control">
+                        <button class="change-quantity" data-change="-10">-10</button>
+                        <button class="change-quantity" data-change="-1">-1</button>
+                        <span class="quantity">1</span>
+                        <button class="change-quantity" data-change="1">+1</button>
+                        <button class="change-quantity" data-change="10">+10</button>
+                    </div>
+                    <button class="button" onclick="addEventListener">加入購物車</button>
+                </div>
+                <div class="card">
+                    <img src="https://www.8way.com.tw/8WayApi/document/c63e91cb-c183-410a-8016-102ef8cbb106.png" alt="fried">
+                    <h3>菜肉大餛飩湯</h3>
+                    <p>一碗60元</p>
+                    <div class="quantity-control">
+                        <button class="change-quantity" data-change="-10">-10</button>
+                        <button class="change-quantity" data-change="-1">-1</button>
+                        <span class="quantity">1</span>
+                        <button class="change-quantity" data-change="1">+1</button>
+                        <button class="change-quantity" data-change="10">+10</button>
+                    </div>
+                    <button class="button" onclick="addEventListener">加入購物車</button>
+                </div>
+            </div>
+            
+        </div>
+        <div id="hand" class="content">
+            <div class="card-container">
+                <div class="card">
+                    <img src="https://www.8way.com.tw/8WayApi/document/a4bc3a79-f213-4465-9160-7e306001a363.png" alt="fried">
+                    <h3>珍珠和風炒手</h3>
+                    <p>一碗60元</p>
+                    <div class="quantity-control">
+                        <button class="change-quantity" data-change="-10">-10</button>
+                        <button class="change-quantity" data-change="-1">-1</button>
+                        <span class="quantity">1</span>
+                        <button class="change-quantity" data-change="1">+1</button>
+                        <button class="change-quantity" data-change="10">+10</button>
+                    </div>
+                    <button class="button" onclick="addEventListener">加入購物車</button>
+                </div>
+                <div class="card">
+                    <img src="https://www.8way.com.tw/8WayApi/document/feca678b-f750-4f87-9489-dc331596d28c.png" alt="fried">
+                    <h3>珍珠紅油炒手</h3>
+                    <p>一碗60元</p>
+                    <div class="quantity-control">
+                        <button class="change-quantity" data-change="-10">-10</button>
+                        <button class="change-quantity" data-change="-1">-1</button>
+                        <span class="quantity">1</span>
+                        <button class="change-quantity" data-change="1">+1</button>
+                        <button class="change-quantity" data-change="10">+10</button>
+                    </div>
+                    <button class="button" onclick="addEventListener">加入購物車</button>
+                </div>
+                <div class="card">
+                    <img src="https://www.8way.com.tw/8WayApi/document/09c9b5e9-6334-4258-8537-345aaef08863.png" alt="fried">
+                    <h3>菜肉和風大炒手</h3>
+                    <p>一碗75元</p>
+                    <div class="quantity-control">
+                        <button class="change-quantity" data-change="-10">-10</button>
+                        <button class="change-quantity" data-change="-1">-1</button>
+                        <span class="quantity">1</span>
+                        <button class="change-quantity" data-change="1">+1</button>
+                        <button class="change-quantity" data-change="10">+10</button>
+                    </div>
+                    <button class="button" onclick="addEventListener">加入購物車</button>
+                </div>
+                <div class="card">
+                    <img src="https://www.8way.com.tw/8WayApi/document/ccd39444-a24d-41ef-aa62-6d5c8788e082.png" alt="fried">
+                    <h3>菜肉紅油大炒手</h3>
+                    <p>一碗75元</p>
+                    <div class="quantity-control">
+                        <button class="change-quantity" data-change="-10">-10</button>
+                        <button class="change-quantity" data-change="-1">-1</button>
+                        <span class="quantity">1</span>
+                        <button class="change-quantity" data-change="1">+1</button>
+                        <button class="change-quantity" data-change="10">+10</button>
+                    </div>
+                    <button class="button" onclick="addEventListener">加入購物車</button>
+                </div>
+            </div>
+        </div>
+        <div id="veg" class="content">
+            <div class="card-container">
+                <div class="card">
+                    <img src="https://www.8way.com.tw/8WayApi/document/cae5067b-efb4-41e9-bb36-ed2e18b064da.png" alt="fried">
+                    <h3>滷蛋</h3>
+                    <p>一份15元</p>
+                    <div class="quantity-control">
+                        <button class="change-quantity" data-change="-10">-10</button>
+                        <button class="change-quantity" data-change="-1">-1</button>
+                        <span class="quantity">1</span>
+                        <button class="change-quantity" data-change="1">+1</button>
+                        <button class="change-quantity" data-change="10">+10</button>
+                    </div>
+                    <button class="button" onclick="addEventListener">加入購物車</button>
+                </div>
+                <div class="card">
+                    <img src="https://www.8way.com.tw/8WayApi/document/ccd39444-a24d-41ef-aa62-6d5c8788e082.png" alt="fried">
+                    <h3>皮蛋豆腐</h3>
+                    <p>一份45元</p>
+                    <div class="quantity-control">
+                        <button class="change-quantity" data-change="-10">-10</button>
+                        <button class="change-quantity" data-change="-1">-1</button>
+                        <span class="quantity">1</span>
+                        <button class="change-quantity" data-change="1">+1</button>
+                        <button class="change-quantity" data-change="10">+10</button>
+                    </div>
+                    <button class="button" onclick="addEventListener">加入購物車</button>
+                </div>
+                <div class="card">
+                    <img src="https://www.8way.com.tw/8WayApi/document/cd29c29f-448f-45f5-b3b6-81e68574ed4d.png" alt="fried">
+                    <h3>黃金豆腐</h3>
+                    <p>一份35元</p>
+                    <div class="quantity-control">
+                        <button class="change-quantity" data-change="-10">-10</button>
+                        <button class="change-quantity" data-change="-1">-1</button>
+                        <span class="quantity">1</span>
+                        <button class="change-quantity" data-change="1">+1</button>
+                        <button class="change-quantity" data-change="10">+10</button>
+                    </div>
+                    <button class="button" onclick="addEventListener">加入購物車</button>
+                </div>
+                <div class="card">
+                    <img src="https://www.8way.com.tw/8WayApi/document/4bf414df-a70f-42b0-b9bb-222985997133.jpg" alt="fried">
+                    <h3>燙青菜</h3>
+                    <p>一份35元</p>
+                    <div class="quantity-control">
+                        <button class="change-quantity" data-change="-10">-10</button>
+                        <button class="change-quantity" data-change="-1">-1</button>
+                        <span class="quantity">1</span>
+                        <button class="change-quantity" data-change="1">+1</button>
+                        <button class="change-quantity" data-change="10">+10</button>
+                    </div>
+                    <button class="button" onclick="addEventListener">加入購物車</button>
+                </div>
+                <div class="card">
+                    <img src="https://www.8way.com.tw/8WayApi/document/6b6ca645-a8e8-4f02-88a2-61791203fc78.png" alt="fried">
+                    <h3>燉蘿蔔</h3>
+                    <p>一份35元</p>
+                    <div class="quantity-control">
+                        <button class="change-quantity" data-change="-10">-10</button>
+                        <button class="change-quantity" data-change="-1">-1</button>
+                        <span class="quantity">1</span>
+                        <button class="change-quantity" data-change="1">+1</button>
+                        <button class="change-quantity" data-change="10">+10</button>
+                    </div>
+                    <button class="button" onclick="addEventListener">加入購物車</button>
+                </div>
+                <div class="card">
+                    <img src="https://www.8way.com.tw/8WayApi/document/d655ae66-3a7a-479b-9098-1071a8aec2d0.png" alt="fried">
+                    <h3>和風秋葵</h3>
+                    <p>一份35元</p>
+                    <div class="quantity-control">
+                        <button class="change-quantity" data-change="-10">-10</button>
+                        <button class="change-quantity" data-change="-1">-1</button>
+                        <span class="quantity">1</span>
+                        <button class="change-quantity" data-change="1">+1</button>
+                        <button class="change-quantity" data-change="10">+10</button>
+                    </div>
+                    <button class="button" onclick="addEventListener">加入購物車</button>
+                </div>
+                <div class="card">
+                    <img src="https://www.8way.com.tw/8WayApi/document/de162a26-d4c3-4431-80eb-f2351700ba40.png" alt="fried">
+                    <h3>薄鹽毛豆</h3>
+                    <p>一份35元</p>
+                    <div class="quantity-control">
+                        <button class="change-quantity" data-change="-10">-10</button>
+                        <button class="change-quantity" data-change="-1">-1</button>
+                        <span class="quantity">1</span>
+                        <button class="change-quantity" data-change="1">+1</button>
+                        <button class="change-quantity" data-change="10">+10</button>
+                    </div>
+                    <button class="button" onclick="addEventListener">加入購物車</button>
+                </div>
+                <div class="card">
+                    <img src="https://www.8way.com.tw/8WayApi/document/096a4c41-e735-48de-889c-e3ea63d98979.png" alt="fried">
+                    <h3>黃金泡菜</h3>
+                    <p>一份30元</p>
+                    <div class="quantity-control">
+                        <button class="change-quantity" data-change="-10">-10</button>
+                        <button class="change-quantity" data-change="-1">-1</button>
+                        <span class="quantity">1</span>
+                        <button class="change-quantity" data-change="1">+1</button>
+                        <button class="change-quantity" data-change="10">+10</button>
+                    </div>
+                    <button class="button" onclick="addEventListener">加入購物車</button>
+                </div>
+                <div class="card">
+                    <img src="https://www.8way.com.tw/8WayApi/document/3297dcca-0d24-414a-8efc-4deea1bcf4c1.png" alt="fried">
+                    <h3>韓式泡菜</h3>
+                    <p>一份30元</p>
+                    <div class="quantity-control">
+                        <button class="change-quantity" data-change="-10">-10</button>
+                        <button class="change-quantity" data-change="-1">-1</button>
+                        <span class="quantity">1</span>
+                        <button class="change-quantity" data-change="1">+1</button>
+                        <button class="change-quantity" data-change="10">+10</button>
+                    </div>
+                    <button class="button" onclick="addEventListener">加入購物車</button>
+                </div>
+                <div class="card">
+                    <img src="https://www.8way.com.tw/8WayApi/document/f21f0fb5-0b7b-415a-871c-b44381fd9e29.png" alt="fried">
+                    <h3>台式泡菜</h3>
+                    <p>一份30元</p>
+                    <div class="quantity-control">
+                        <button class="change-quantity" data-change="-10">-10</button>
+                        <button class="change-quantity" data-change="-1">-1</button>
+                        <span class="quantity">1</span>
+                        <button class="change-quantity" data-change="1">+1</button>
+                        <button class="change-quantity" data-change="10">+10</button>
+                    </div>
+                    <button class="button" onclick="addEventListener">加入購物車</button>
+                </div>
+            </div>
+            
+        </div>
+        <div id="drink" class="content">
+            <div class="card-container">
+                <div class="card">
+                    <img src="https://www.8way.com.tw/8WayApi/document/38472970-2008-4c6f-bf7b-b8bc255abcc2.jpg" alt="fried">
+                    <h3>香濃豆漿</h3>
+                    <p>一杯20元</p>
+                    <div class="quantity-control">
+                        <button class="change-quantity" data-change="-10">-10</button>
+                        <button class="change-quantity" data-change="-1">-1</button>
+                        <span class="quantity">1</span>
+                        <button class="change-quantity" data-change="1">+1</button>
+                        <button class="change-quantity" data-change="10">+10</button>
+                    </div>
+                    <button class="button" onclick="addEventListener">加入購物車</button>
+                </div>
+                <div class="card">
+                    <img src="https://www.8way.com.tw/8WayApi/document/55a790c1-f0de-4051-9422-0e313950b5ed.jpg" alt="fried">
+                    <h3>香濃豆漿(無加糖)</h3>
+                    <p>一杯20元</p>
+                    <div class="quantity-control">
+                        <button class="change-quantity" data-change="-10">-10</button>
+                        <button class="change-quantity" data-change="-1">-1</button>
+                        <span class="quantity">1</span>
+                        <button class="change-quantity" data-change="1">+1</button>
+                        <button class="change-quantity" data-change="10">+10</button>
+                    </div>
+                    <button class="button" onclick="addEventListener">加入購物車</button>
+                </div>
+                <div class="card">
+                    <img src="https://www.8way.com.tw/8WayApi/document/12e26c92-e373-4029-afee-9712cb4b46fd.jpg" alt="fried">
+                    <h3>黑豆漿</h3>
+                    <p>一杯20元</p>
+                    <div class="quantity-control">
+                        <button class="change-quantity" data-change="-10">-10</button>
+                        <button class="change-quantity" data-change="-1">-1</button>
+                        <span class="quantity">1</span>
+                        <button class="change-quantity" data-change="1">+1</button>
+                        <button class="change-quantity" data-change="10">+10</button>
+                    </div>
+                    <button class="button" onclick="addEventListener">加入購物車</button>
+                </div>
+                <div class="card">
+                    <img src="https://www.8way.com.tw/8WayApi/document/8a1692c1-dab1-45bf-abdb-52a4a2545889.jpg" alt="fried">
+                    <h3>真傳特調紅茶</h3>
+                    <p>一杯20元</p>
+                    <div class="quantity-control">
+                        <button class="change-quantity" data-change="-10">-10</button>
+                        <button class="change-quantity" data-change="-1">-1</button>
+                        <span class="quantity">1</span>
+                        <button class="change-quantity" data-change="1">+1</button>
+                        <button class="change-quantity" data-change="10">+10</button>
+                    </div>
+                    <button class="button" onclick="addEventListener">加入購物車</button>
+                </div>
+            </div>
+            
+        </div>
+    </main>
 </body>
 </html>
