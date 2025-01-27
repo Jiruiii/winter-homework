@@ -132,3 +132,36 @@ body {
     color: white;
     border-radius: 10px;
 }
+
+/* 外層容器：讓文字和圖片水平排列 */
+.content-box {
+    display: flex; /* 使用 Flexbox */
+    justify-content: space-between; /* 左右分佈 */
+    align-items: flex-start; /* 垂直對齊文字 */
+    gap: 10px; /* 左右之間的間距 */
+    margin: 100px 20px; /* 整體的外邊距 */
+}
+
+/* 左側文字部分 */
+.intro {
+    flex: 3; /* 左側佔比較大的空間 */
+    line-height: 1.8; /* 增加文字行距，讓排版更好看 */
+}
+
+/* 右側圖片部分 */
+.qrcode-box {
+    flex: 1; /* 右側佔比較小的空間 */
+    display: flex;
+    justify-content: center; /* 圖片水平居中 */
+    align-items: center; /* 圖片垂直居中 */
+}
+
+/* 圖片樣式 */
+.qrcode-img {
+    max-width: 200px; /* 圖片最大寬度 */
+    max-height: 200px; /* 圖片最大高度 */
+    width: auto;
+    height: auto;
+    border: 1px solid #ccc; /* 可選：加一個圖片邊框 */
+    border-radius: 10px; /* 可選：圖片圓角 */
+}
