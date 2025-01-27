@@ -292,11 +292,13 @@
     left: 0px;
 }
 .noodle img{
-    width:200px;
+    position:relative;
+    width:50%;
     height: auto;
+    left:50%;
 }
 .environmental img{
-    width:250px;
+    width:50%;
     height: auto;
 }
 

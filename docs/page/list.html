@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dynamic Navigation</title>
+    <title>安心餐點</title>
     <style>
         * {
             margin: 0;
@@ -279,14 +279,14 @@
             <div class="header-box">
             <div class="menu-box">
                 <div class="menu-nav">
-                    <a href="index.html" class="menu-logo">
+                    <a href="../index.html" class="menu-logo">
                         <img src="https://www.8way.com.tw/static/img/logo.47158c2.svg" alt="logo">
                     </a>
                     
                     <ul class="menu-nav-list lxgw-wenkai-mono-tc-regular">
                         <li class="menu-nav-li lxgw-wenkai-mono-tc-regular">
                             <a class="menu-nav-a lxgw-wenkai-mono-tc-regular">
-                            安心餐點
+                            <b>安心餐點</b>
                             <i class="down"></i>
                             </a>
                             <div class="menu-nav-dropdown lxgw-wenkai-mono-tc-regular">
@@ -304,27 +304,27 @@
                     </ul>
                     <ul class="menu-nav-list">
                         <li class="menu-nav-li">
-                            <a class="menu-nav-a lxgw-wenkai-mono-tc-regular">企業簡介</a>
+                            <a class="menu-nav-a lxgw-wenkai-mono-tc-regular"><b>企業簡介</b></a>
                         </li>
                     </ul>
                     <ul class="menu-nav-list">
                         <li class="menu-nav-li">
-                            <a class="menu-nav-a lxgw-wenkai-mono-tc-regular">最新消息</a>
+                            <a class="menu-nav-a lxgw-wenkai-mono-tc-regular"><b>最新消息</b></a>
                         </li>
                     </ul>
                     <ul class="menu-nav-list">
                         <li class="menu-nav-li">
-                            <a class="menu-nav-a lxgw-wenkai-mono-tc-regular">加盟專區</a>
+                            <a class="menu-nav-a lxgw-wenkai-mono-tc-regular"><b>加盟專區</b></a>
                         </li>
                     </ul>
                     <ul class="menu-nav-list">
                         <li class="menu-nav-li">
-                            <a class="menu-nav-a lxgw-wenkai-mono-tc-regular">聯絡我們</a>
+                            <a class="menu-nav-a lxgw-wenkai-mono-tc-regular"><b>聯絡我們</b></a>
                         </li>
                     </ul>
                     <ul class="menu-nav-list">
                         <li class="menu-nav-li">
-                            <a href="menu.html" class="menu-nav-a lxgw-wenkai-mono-tc-regular menu-order">線上點餐</a>
+                            <a href="menu.html" class="menu-nav-a lxgw-wenkai-mono-tc-regular menu-order"><b>線上點餐</b></a>
                         </li>
                     </ul>
                 </div>
@@ -643,11 +643,21 @@
 
         // 啟動函數：根據 URL hash 設置初始顯示
         window.addEventListener('DOMContentLoaded', () => {
-            const hash = window.location.hash.substring(1); // 取得 URL 的 hash 值，去掉前面的 #
+            const hash = window.location.hash.substring(1); // 獲取 hash 值
             if (hash) {
                 showContent(hash); // 顯示對應區塊
+                // 檢查 hash 是否對應到有效的 DOM 元素
+                const targetElement = document.getElementById(hash);
+                if (targetElement) {
+                    setTimeout(() => {
+                        targetElement.scrollIntoView({ behavior: 'smooth' });
+                    }, 50);
+                } else {
+                    console.error(`Element with ID "${hash}" not found.`);
+                }
             }
         });
+
 
         // 監聽 hash 變化（例如使用者手動切換 URL hash）
         window.addEventListener('hashchange', () => {
@@ -656,12 +666,12 @@
                 showContent(hash);
             }
         });
-        // 自動滾動到對應區塊頂端
+        //自動滾動到對應區塊頂端
         window.onload =function(){window.scrollTo(0,0);}
-            // 確保滾動到頂端
-    setTimeout(() => {
-        window.scrollTo(0, 0);
-    }, 0);
+        //確保滾動到頂端
+        setTimeout(() => {
+            window.scrollTo(0, 0);
+        }, 0);
     </script>
 </body>
 </html>
