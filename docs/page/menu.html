@@ -280,35 +280,33 @@
                 return(total);
             }
 
-        // 結帳
-        document.getElementById("checkout").addEventListener("click", () => {
-            if (cart.length === 0) {
-                alert("購物車是空的！");
-            } else {
-                const total = updateCart(); // 呼叫 updateCart 並取得總金額
-                alert(`總金額: ${total} 元，感謝購買！`); // 使用 total
-                cart.length = 0;
-                updateCart(); // 再次清空購物車並更新顯示
-                cartContainer.classList.add("hidden");
-            }
+            // 結帳
+            document.getElementById("checkout").addEventListener("click", () => {
+                if (cart.length === 0) {
+                    alert("購物車是空的！");
+                } else {
+                    const total = updateCart(); // 呼叫 updateCart 並取得總金額
+                    alert(`總金額: ${total} 元，感謝購買！`); // 使用 total
+                    cart.length = 0;
+                    updateCart(); // 再次清空購物車並更新顯示
+                    cartContainer.classList.add("hidden");
+                }
+            });
+            const sidebar = document.getElementById("sidebar");
+            const openSidebarButton = document.getElementById("open-sidebar");
+            const closeSidebarButton = document.getElementById("close-sidebar");
+
+            // 打開側邊欄
+            openSidebarButton.addEventListener("click", () => {
+                sidebar.classList.add("active");
+            });
+
+            // 關閉側邊欄
+            closeSidebarButton.addEventListener("click", () => {
+                sidebar.classList.remove("active");
+            });
+
         });
-        const sidebar = document.getElementById("sidebar");
-        const openSidebarButton = document.getElementById("open-sidebar");
-        const closeSidebarButton = document.getElementById("close-sidebar");
-
-        // 打開側邊欄
-        openSidebarButton.addEventListener("click", () => {
-            sidebar.classList.add("active");
-        });
-
-        // 關閉側邊欄
-        closeSidebarButton.addEventListener("click", () => {
-            sidebar.classList.remove("active");
-        });
-
-    });
-
-
     </script>
     <div id="sidebar" class="sidebar hidden">
         <button id="close-sidebar" class="close-btn">←</button>
